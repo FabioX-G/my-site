@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% if title %}{{ title }} | {% endif %}{{ site.title or "Fabio Xie" }}</title>
+  <meta name="description" content="{{ site.description or 'Fabio Xie — 经验、博客、书架' }}" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='12' fill='%2300bcd4'/%3E%3C/svg%3E">
+</head>
+
+{# 在文章 front matter 写 reading: true 可启用沉浸阅读样式 #}
+<body class="{% if reading %}reading{% endif %}">
+
+  <!-- 无障碍：跳到主内容 -->
+  <a class="skip-link" href="#main-content">跳到主内容</a>
+
+  <!-- 启动器：固定小球 + 贴屏抽屉 -->
+  <div class="nav-launcher" aria-label="主导航">
+    <!-- 固定小球（唯一的球） -->
+    <button class="nav-fab" aria-controls="sidebar" aria-expanded="false">
+      <span class="dot" aria-hidden="true"></span>
+      <span class="sr-only">打开导航</span>
+    </button>
+
+    <!-- 侧栏抽屉（贴上/左/下边，不留白） -->
+    <!-- Sidebar -->
+    <aside class="sidebar" aria-label="Site navigation">
+      <div class="sidebar-content">
+        <!-- 新：侧栏 Header，负责和“小球”对齐 -->
+        <header class="sidebar-header">
+          <a href="/" class="brand">Fabio Xie</a>
+        </header>
+
+        <nav class="nav" aria-label="Primary">
+          <a class="nav-link nav-about{% if page.url == '/about/' %} is-active{% endif %}" href="/about/">About Me</a>
+          <a class="nav-link nav-blog{% if page.url == '/blog/' %} is-active{% endif %}" href="/blog/">Blog</a>
+          <a class="nav-link nav-books{% if page.url == '/library/' %} is-active{% endif %}" href="/library/">Bookshelf</a>
+        </nav>
+
+        <footer class="sidebar-footer">© 2025 Fabio Xie</footer>
+      </div>
+    </aside>
+  </div>
+
+  <!-- 主内容容器 -->
+  <main id="main-content" class="container">
+    {{ content | safe }}
+  </main>
+
+  <!-- 站点页脚（可在 CSS 里做“页尾总是贴底”的布局） -->
+  <footer class="site-footer" role="contentinfo">
+    <small>© {{ "now" | date("yyyy") }} {{ site.author or "Fabio Xie" }}</small>
+  </footer>
+
+  <!-- 交互脚本：hover 展开 / click 切换 / Esc 关闭 / 点击外部关闭 -->
+  <script>
+  (() => {
+    const root = document.querySelector('.nav-launcher');
+    if (!root) return;
+
+    const fab = root.querySelector('.nav-fab');
+    const sidebar = root.querySelector('.sidebar');
+
+    let hideTimer = null;
+
+    const open = () => {
+      clearTimeout(hideTimer);
+      root.classList.add('is-open');
+      fab.setAttribute('aria-expanded', 'true');
+    };
+
+    const close = () => {
+      clearTimeout(hideTimer);
+      root.classList.remove('is-open');
+      fab.setAttribute('aria-expanded', 'false');
+    };
+
+    const scheduleClose = (delay = 160) => {
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(close, delay);
+    };
+
+    // 桌面：悬停球或侧栏即展开；离开 launcher 区域延时关闭
+    fab.addEventListener('mouseenter', open);
+    sidebar.addEventListener('mouseenter', open);
+    root.addEventListener('mouseleave', () => scheduleClose(160));
+
+    // 兜底：点击球切换（移动端或不支持 :has 的浏览器）
+    fab.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (root.classList.contains('is-open')) close(); else open();
+    });
+
+    // Esc 关闭
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') close();
+    });
+
+    // 点击外部关闭
+    document.addEventListener('click', (e) => {
+      if (!root.classList.contains('is-open')) return;
+      if (!e.target.closest('.nav-launcher')) close();
+    });
+  })();
+  </script>
+</body>
+</html>

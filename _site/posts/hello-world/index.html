@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fabio Xie</title>
+  <meta name="description" content="Fabio Xie — 经验、博客、书架" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='12' fill='%2300bcd4'/%3E%3C/svg%3E">
+</head>
+
+
+<body class="reading">
+
+  <!-- 无障碍：跳到主内容 -->
+  <a class="skip-link" href="#main-content">跳到主内容</a>
+
+  <!--
+    启动器区域：一个“固定位置的小球” + “贴屏幕的侧栏抽屉”
+    关键点：
+    1) 小球和侧栏都使用 position: fixed；小球不会因为父级尺寸/动画而位移。
+    2) 侧栏默认隐藏（scaleX(0)/opacity:0），.is-open 或 :hover 时显示。
+  -->
+  <div class="nav-launcher" aria-label="Main navigation">
+    <!-- 小球（固定在左上角，始终不动） -->
+    <button class="nav-fab" aria-controls="sidebar" aria-expanded="false">
+      <span class="dot" aria-hidden="true"></span>
+      <span class="sr-only">Open navigation</span>
+    </button>
+
+    <!-- 侧栏（固定贴屏幕，不留边距空白） -->
+    <aside id="sidebar" class="sidebar" role="navigation" aria-label="Sidebar">
+      <div class="sidebar-content">
+        <a class="brand" href="/"><span class="dot"></span>Fabio Xie</a>
+        <nav class="nav">
+          <a class="nav-link nav-about" href="/about/">About Me</a>
+          <a class="nav-link nav-blog"  href="/blog/">Blog</a>
+          <a class="nav-link nav-books" href="/library/">Bookshelf</a>
+        </nav>
+      </div>
+      <div class="sidebar-footer">© 2025 Fabio Xie</div>
+    </aside>
+  </div>
+
+  <!-- 主内容 -->
+  <main id="main-content" class="container">
+    <p class="meta">2025-09-27</p>
+<h1>创新者的五大 '人格特质'</h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yixIc1Ai6jM?si=s4lAtGdH6DC5YlBc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<ol>
+<li>
+<p><strong>高开放性（Openness to Experience）</strong></p>
+<p>创新者通常具有高度的好奇心和接受新事物的能力，喜欢探索不熟悉的想法或领域。这种特质让他们能跳脱常规，从跨学科领域中激发创造力。</p>
+<p>🧠 <em>例：他们可能同时对人工智能、文学和神经科学感兴趣，并将其结合出新创意。</em></p>
+</li>
+<li>
+<p><strong>高尽责性（Conscientiousness）</strong></p>
+<p>他们非常自律、努力，有计划地追求目标。这使得他们能够在需要长期坚持与细致打磨的项目中获得成功。</p>
+<p>💪 <em>例：即使一项发明需要10年才能实现，他们也能持续推进。</em></p>
+</li>
+<li>
+<p><strong>高不讨好（Disagreeableness）</strong></p>
+<p>创新者往往不随波逐流，也不在意他人对他们观点的接受度。他们敢于坚持自己的看法，即使会引来质疑或批评。</p>
+<p>🔥 <em>例：“大家都不看好这项技术？那我偏要做。”</em></p>
+</li>
+<li>
+<p><strong>高智力（Intelligence）</strong></p>
+<p>他们具备强大的理解力和系统性思维，能快速吸收复杂信息并进行重构。这在解决创新性问题时至关重要。</p>
+<p>🧩 <em>例：能快速理解一个新领域的基本规则，并提出颠覆性方案。</em></p>
+</li>
+<li>
+<p><strong>低神经质（Low Neuroticism）</strong></p>
+<p>他们情绪稳定、不容易焦虑或崩溃，能在面对失败、风险和批评时保持冷静。这种心理韧性对创新特别重要。</p>
+<p>🧘 <em>例：即使产品失败了三次，他们也能理性分析并继续尝试。</em></p>
+</li>
+</ol>
+
+  </main>
+
+  <!-- 单一脚本（悬停/点击展开；离开延迟收起；Esc 关闭） -->
+  <script>
+  (() => {
+    const root = document.querySelector('.nav-launcher');
+    if (!root) return;
+
+    const fab     = root.querySelector('.nav-fab');
+    const sidebar = root.querySelector('.sidebar');
+
+    let hideTimer;
+
+    const open = () => {
+      clearTimeout(hideTimer);
+      root.classList.add('is-open');
+      fab.setAttribute('aria-expanded', 'true');
+    };
+
+    const scheduleClose = (delay = 160) => {
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => {
+        root.classList.remove('is-open');
+        fab.setAttribute('aria-expanded', 'false');
+      }, delay);
+    };
+
+    // 悬停打开/离开关闭（桌面）
+    fab.addEventListener('mouseenter', open);
+    root.addEventListener('mouseleave', () => scheduleClose(160));
+
+    // 点击切换（移动端 / 不支持 :has 的环境兜底）
+    fab.addEventListener('click', (e) => {
+      e.preventDefault();
+      clearTimeout(hideTimer);
+      const willOpen = !root.classList.contains('is-open');
+      if (willOpen) open(); else scheduleClose(0);
+    });
+
+    // Esc 关闭
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') scheduleClose(0);
+    });
+
+    // 点击侧栏外区域也关闭（可选）
+    document.addEventListener('click', (e) => {
+      if (!root.classList.contains('is-open')) return;
+      const clickInside = root.contains(e.target);
+      if (!clickInside) scheduleClose(0);
+    });
+  })();
+  </script>
+</body>
+</html>
