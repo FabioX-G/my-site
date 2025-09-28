@@ -1,50 +1,43 @@
-// .eleventy.js
-const { DateTime } = require("luxon");
+// .eleventy.js  (Eleventy v3.x)
+module.exports = function(eleventyConfig) {
+  // 静态资源（若你用了 /src/img）
+  eleventyConfig.addPassthroughCopy({ "src/img": "img" });
 
-module.exports = function (eleventyConfig) {
-  // 静态资源直出
-  eleventyConfig.addPassthroughCopy("src/assets");
+  // ===== 日期过滤器 =====
+  const { DateTime } = require("luxon");
 
-  // 文章集合
-  eleventyConfig.addCollection("posts", (api) =>
-    api.getFilteredByGlob("src/posts/*.md").sort((a, b) => b.date - a.date)
+  // 兼容你在模板里用到的 | date
+  // 用法：{{ someDate | date("yyyy-LL-dd") }}
+  eleventyConfig.addFilter("date", (dateObj, fmt = "yyyy-LL-dd") => {
+    if (!dateObj) return "";
+    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat(fmt);
+  });
+
+  // 你在 blog.md 里用到的 | dateFormat
+  eleventyConfig.addFilter("dateFormat", (dateObj, fmt = "yyyy-LL-dd") => {
+    if (!dateObj) return "";
+    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat(fmt);
+  });
+
+  // ===== 文章集合：只取 tags:["posts"] 且 reading:true，按日期倒序 =====
+  eleventyConfig.addCollection("blogDesc", (collectionApi) => {
+    return collectionApi.getFilteredByTag("posts")
+      .filter(item => item.data && item.data.reading === true && item.data.draft !== true)
+      .sort((a, b) => b.date - a.date); // 新→旧
+  });
+
+  // Current year shortcode for footer
+  eleventyConfig.addShortcode("year", () => new Date().getFullYear());  
+
+  eleventyConfig.addCollection("essayDesc", (api) =>
+  api.getFilteredByTag("essay").sort((a, b) => b.date - a.date)
   );
 
-  // --- 日期工具 ---
-  function toDate(input) {
-    if (!input) return null;
-    if (input instanceof Date) return input;
-    if (typeof input === "number") return new Date(input); // 时间戳
-    if (typeof input === "string") {
-      if (input.toLowerCase() === "now") return new Date();
-      const iso = DateTime.fromISO(input);
-      if (iso.isValid) return iso.toJSDate();
-    }
-    return null;
-  }
-
-  function formatDate(input, fmt = "yyyy-LL-dd") {
-    const jsDate = toDate(input);
-    if (!jsDate) return "";
-    return DateTime.fromJSDate(jsDate).toFormat(fmt);
-  }
-
-  // 统一注册（Eleventy v2/v3 都吃）
-  eleventyConfig.addFilter("date", formatDate);
-  eleventyConfig.addFilter("dateFormat", formatDate);
-  // 兼容旧 API（不报错就好）
-  if (eleventyConfig.addNunjucksFilter) {
-    eleventyConfig.addNunjucksFilter("date", formatDate);
-    eleventyConfig.addNunjucksFilter("dateFormat", formatDate);
-  }
-
-  // 年份 shortcode
-  eleventyConfig.addShortcode("year", () => new Date().getFullYear());
-
+  // 目录与模板引擎（v3 用返回对象）
   return {
-    dir: { input: "src", includes: "_includes", data: "_data", output: "_site" },
+    dir: { input: "src", output: "_site" },
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
-    // templateFormats: ["njk", "md", "html"], // 可选
+    dataTemplateEngine: "njk"
   };
 };
