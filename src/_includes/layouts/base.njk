@@ -16,7 +16,7 @@
 </head>
 
 {# 仅保留一个控制类：reading（沉浸阅读模式） #}
-<body class="{% if reading %}reading{% endif %}">
+<body class="{% if reading %}reading {% endif %}{% if home %}home{% endif %}">
   {# 无障碍：键盘直达主内容 #}
   <a class="skip-link" href="#main-content">跳到主内容</a>
 
@@ -50,7 +50,7 @@
   </div>
 
   {# ───────── 主内容区域（唯一的主容器）───────── #}
-  <main id="main-content" class="site-main" role="main" tabindex="-1">
+  <main  class="site-main" role="main" tabindex="-1">
     <div class="container">
       {{ content | safe }}
     </div>
