@@ -295,6 +295,14 @@ body { display: flex; min-height: 100vh; flex-direction: column; }
 main, .site-main { flex: 1; }              /* 兼容你用不用 .site-main */
 
 footer { margin-top: auto; }
+/* 默认：所有页面粘底 */
+footer { margin-top: auto; }
+
+/* 首页：页脚紧跟内容（不要把中间空出来） */
+body.home footer.site-footer { 
+  margin-top: 0;   /* 你也可以设为 0，看你想要的间距 */
+}
+
 .site-footer, .container--footer {
   display: flex;
   justify-content: center;                  /* 水平居中 */
