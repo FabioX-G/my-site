@@ -17,6 +17,8 @@ I share my [thoughts](/blog) irregularly to this site to think and reflect.
 In my free time, I enjoy reading books about science and technology, training muay thai, playing soccer, and spending time with my 10yo brother Jason (together we play brawl stars & FC mobile, and read before bedtime).
 
 ## Latest Essays
-{% for post in collections.essay | sort(attribute='date') | reverse | slice(0,3) %}
+{% for post in collections.essay | sort(attribute='date') | reverse %}
+  {% if loop.index0 < 3 %}
 - [{{ post.data.title }}]({{ post.url }}) ({{ post.date | date('yyyy-LL-dd') }})
+  {% endif %}
 {% endfor %}
