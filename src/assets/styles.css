@@ -388,3 +388,7 @@ footer.site-footer,
 footer.site-footer::before,
 footer.site-footer::after,
 .container--footer { background: transparent !important; border: 0 !important; box-shadow: none !important; }
+
+
+/* kill 背景噪声层，避免在底部叠出“黑带” */
+html::before, html::after { content: none !important; display: none !important; }
