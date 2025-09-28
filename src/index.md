@@ -15,7 +15,7 @@ In my free time, I enjoy reading [books](/library/) about science and technology
 - **2000** — Born in Lisbon, Portugal 🇵🇹  
 - **2005–2019** — Grew up in Shanghai, China 🇨🇳  
 - **2019–2024** — Studied *Environment, Sustainability, and Policy* and *Entrepreneurship and Emerging Enterprises* at Syracuse University 🇺🇸  
-  *(After junior year, I moved to Thailand with my family and spent more than a year there, before going back to finish my bachelor's degree.)*  
+  *(After junior year, I moved to Thailand 🇹🇭 with my family and spent more than a year there, before going back to finish my bachelor's degree.)*  
 - **2025–now** — Building **Amora Vida Lda.** in Portugal
 
 ## Latest Essays
