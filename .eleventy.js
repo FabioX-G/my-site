@@ -1,7 +1,9 @@
 // .eleventy.js  (Eleventy v3.x)
 module.exports = function(eleventyConfig) {
+  // 监视 assets 变更（开发时热更新）
+  eleventyConfig.addWatchTarget("src/assets");
   // 静态资源（若你用了 /src/img）
-  eleventyConfig.addPassthroughCopy({ "src/img": "img" });
+  eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
 
   // ===== 日期过滤器 =====
   const { DateTime } = require("luxon");
@@ -34,10 +36,15 @@ module.exports = function(eleventyConfig) {
   );
 
   // 目录与模板引擎（v3 用返回对象）
-  return {
-    dir: { input: "src", output: "_site" },
+    return {
+    dir: {
+      input: "src",
+      output: "_site",
+      includes: "_includes",
+      data: "_data"
+    },
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
-    dataTemplateEngine: "njk"
+    templateFormats: ["njk", "md", "html"]
   };
 };
