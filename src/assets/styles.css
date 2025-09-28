@@ -318,3 +318,36 @@ body.home footer.site-footer {
 .blog-list li { margin: 0.5rem 0; }
 
 /* 若你有给 .container/.content 设置了 min-height:150vh/200vh，请删掉或改为 auto */
+
+/* 1) 页脚强制透明，去掉任何阴影/边框 */
+footer.site-footer,
+footer.site-footer::before,
+footer.site-footer::after,
+.container--footer {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* 2) 首页：页脚紧跟内容，不要“中间大块深色” */
+body.home main,
+body.home main.site-main { flex: 0; min-height: auto; }
+body.home footer.site-footer { margin-top: 16px; }
+body.home main .container > :last-child { margin-bottom: 0; }
+
+/* 3) 降低 html::after 的覆盖强度，并在最底部做渐隐 */
+html::after { opacity: .35; mix-blend-mode: normal; }
+@supports (mask-image: linear-gradient(#000, #000)) {
+  html::after{
+    mask-image: linear-gradient(to bottom,
+      #000 0%, #000 78%, transparent 98%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom,
+      #000 0%, #000 78%, transparent 98%, transparent 100%);
+  }
+}
+
+/* 4) 万一是扩展注入的底部条，直接隐藏（仅站点作用） */
+[class*="glasp-"],
+#otherside-root,
+#olaso-extension-toast-container,
+deepl-input-controller { display: none !important; }
