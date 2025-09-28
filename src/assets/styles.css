@@ -10,11 +10,11 @@
   --shadow: 0 12px 42px rgba(0,0,0,.18);
   --content-max: clamp(820px,72vw,1200px);
 
-  /* Brand Accents */
+  /* Accents */
   --acc-cyan: #00e5ff;
   --acc-blue: #2b74ff;
 
-  /* Sidebar alignment tokens */
+  /* Sidebar alignment */
   --side-pad: 16px;
   --nav-indent: 42px;
   --text-left: calc(var(--side-pad) + var(--nav-indent));
@@ -24,150 +24,118 @@
   --ball-top: 18px;
   --ball-left: 16px;
 
-  /* Sidebar bg */
-  --sidebar-bg: linear-gradient(180deg, #001a33 0%, #001529 100%);
+  /* Colors used by background */
+  --bg-c1: #e6f2ff;         /* light */
+  --bg-c2: #4da6ff;         /* mid */
+  --bg-c3: #1a2a4a;         /* softened deep (no harsh black band) */
 
-  /* Background base gradient */
-  --bg-c1: #e6f2ff;  /* top-left soft */
-  --bg-c2: #4da6ff;  /* mid */
-  --bg-c3: #0a0f2c;  /* deep */
+  --sidebar-bg: linear-gradient(180deg, #001a33 0%, #001529 100%);
 }
 
 /* ---------- Base Reset ---------- */
 *{ box-sizing: border-box; }
-html, body{ margin: 0; padding: 0; }
-html, body{ overflow-x: clip; } /* 防横向 1px 溢出引发假纵向滚动 */
-
+html, body{ margin: 0; padding: 0; overflow-x: clip; }
 body{
   color: var(--fg);
   font: 16px/1.65 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
         "SF Pro SC","PingFang SC","Hiragino Sans GB","Noto Sans CJK SC", sans-serif;
-  background: transparent !important;   /* 只在 html 画背景 */
-  animation: none !important;           /* 禁用旧的 body 级动画 */
+  background: transparent;   /* 背景画在 html 上 */
 }
 
-/* ---------- Cyberpunk Background (HTML owns it) ---------- */
-/* 基础线性渐变：稳定、不会触发布局 */
+/* ---------- Background (HTML owns it) ---------- */
+/* 两个光斑 + 一条线性过渡；底部不再压黑 */
 html{
   min-height: 100%;
   background:
     radial-gradient(1400px 560px at 12% 18%, rgba(173,216,255,.45), transparent 55%),
-    radial-gradient(1100px 520px at 88% 78%, rgba(0,188,212,.24), transparent 60%),
-    linear-gradient(122deg, var(--bg-c1) 0%, var(--bg-c2) 42%, var(--bg-c3) 100%);
+    radial-gradient(1100px 520px at 88% 78%, rgba(0,188,212,.22), transparent 62%),
+    linear-gradient(122deg, var(--bg-c1) 0%, var(--bg-c2) 100%);
   background-repeat: no-repeat;
   background-attachment: scroll;
-  background-color: var(--bg-c3);
+  background-color: var(--bg-c1);
 }
 
-/* 动态发光层：使用 fixed 伪元素，不参与布局，不产生滚动 */
+/* 可选：若想要科幻噪声层，把下面注释解开即可（已调成底部渐隐与低不透明度） */
+/*
 html::before,
 html::after{
   content:"";
   position: fixed;
-  inset: -10% -10%;           /* 略放大避免边缘露底 */
+  inset: -10% -10%;
   pointer-events: none;
   z-index: -1;
 }
-
-/* ::before — 缓慢漂移的发光“能量团” */
 html::before{
   background:
     radial-gradient(700px 380px at 10% 12%, rgba(0,229,255,.25), transparent 60%),
     radial-gradient(520px 300px at 90% 84%, rgba(43,116,255,.18), transparent 65%),
     radial-gradient(380px 260px at 68% 22%, rgba(255,255,255,.08), transparent 70%);
-  filter: blur(0.2px);        /* 轻微柔化 */
-  transform: translate3d(0,0,0);
+  filter: blur(.2px);
   animation: bgDrift 38s ease-in-out infinite;
-  will-change: transform;
 }
-
-/* ::after — 细腻噪声与扫描线，制造科幻质感 */
-/* 细噪声层：整体更淡，并在靠近底部做渐隐，避免形成“黑带”错觉 */
 html::after{
   background:
     repeating-radial-gradient(circle at 20% 30%, rgba(255,255,255,.018) 0 2px, transparent 2px 6px),
-    repeating-linear-gradient( to bottom, rgba(255,255,255,.025) 0 1px, transparent 1px 3px);
-  mix-blend-mode: normal;
+    repeating-linear-gradient(to bottom, rgba(255,255,255,.020) 0 1px, transparent 1px 3px);
   opacity: .22;
   animation: noiseShift 11s linear infinite;
-  will-change: background-position;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 78%, transparent 96%, transparent 100%);
+          mask-image: linear-gradient(to bottom, #000 0%, #000 78%, transparent 96%, transparent 100%);
 }
-@supports (mask-image: linear-gradient(#000, #000)) {
-  html::after{
-    mask-image: linear-gradient(to bottom,
-      #000 0%, #000 78%, transparent 96%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom,
-      #000 0%, #000 78%, transparent 96%, transparent 100%);
-  }
-}
-@keyframes bgDrift{
-  0%,100% { transform: translate3d(0,0,0) }
-  50%     { transform: translate3d(2.2%, -1.8%, 0) }
-}
-
-@keyframes noiseShift{
-  0%   { background-position: 0 0, 0 0; }
-  100% { background-position: 0 120px, 0 220px; }
-}
-
-/* 减少动画：用户选择时自动静止 */
 @media (prefers-reduced-motion: reduce){
-  html::before, html::after{ animation: none !important; }
+  html::before, html::after{ animation: none; }
 }
+@keyframes bgDrift{ 0%,100%{ transform: none } 50%{ transform: translate3d(2.2%,-1.8%,0) } }
+@keyframes noiseShift{ 0%{ background-position:0 0,0 0 } 100%{ background-position:0 120px,0 220px } }
+*/
 
-/* ---------- Layout Containers ---------- */
+/* ---------- Page Layout (sticky footer baseline) ---------- */
+html, body { height: 100%; }
+body { display: flex; min-height: 100vh; flex-direction: column; }
+main.site-main { flex: 1; }  /* 主体填充 */
+
+/* 首页不拉伸；footer 紧跟内容 */
+body.home main.site-main { flex: 0; min-height: auto; }
+
+/* ---------- Containers ---------- */
 .container{
-  flex: 1;
   width: 100%;
   max-width: var(--content-max);
   margin: 14px auto;
   padding: 28px;
-
   background: transparent;
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
-
-  animation: fx-fade-up .5s ease-out both;
-  animation-delay: .06s;
+  border: 0; border-radius: 0; box-shadow: none;
+  animation: fx-fade-up .5s ease-out both; animation-delay: .06s;
   will-change: opacity, transform;
 }
 
-
-/* Footer：贴底且与正文左缘对齐（通过 .container--footer） */
+/* ---------- Footer (centered + transparent) ---------- */
 .site-footer{
-  margin-top: auto;                   /* 关键：推到底部 */
-  padding: 0;                         /* 由内层容器决定内边距 */
+  margin-top: auto;           /* 粘底 */
+  padding: 0;
   font-size: 14px;
   color: rgba(255,255,255,.85);
   text-shadow: 0 1px 2px rgba(0,0,0,.25);
 }
+.site-footer, .container--footer{
+  display: flex; justify-content: center; align-items: center; text-align: center;
+}
 .container--footer{
   width: 100%;
+  max-width: var(--content-max);
   margin: 0 auto;
-  padding: 12px 0px;                 /* 与 .container 左右一致 */
-  max-width: var(--content-max); /* 确保和正文宽度一致 */
-  text-align: center; 
+  padding: 12px 0;
+  background: transparent !important; border: 0 !important; box-shadow: none !important;
 }
 
 /* ---------- Floating Launcher + Sidebar ---------- */
-/* 容器完全脱离文档流，避免撑高页面 */
-.nav-launcher{
-  position: fixed;
-  inset: 0 auto auto 0;               /* 贴左上；右下：inset: auto 16px 16px auto */
-  z-index: 2000;
-  pointer-events: none;               /* 容器不吃事件，内部吃 */
-}
+.nav-launcher{ position: fixed; inset: 0 auto auto 0; z-index: 2000; pointer-events: none; }
 .nav-launcher > *{ pointer-events: auto; }
 
 .nav-fab{
-  position: fixed;
-  top: var(--ball-top);
-  left: var(--ball-left);
-  width: var(--ball-size);
-  height: var(--ball-size);
-  display: grid; place-items: center;
-  background: transparent; border: 0; cursor: pointer;
+  position: fixed; top: var(--ball-top); left: var(--ball-left);
+  width: var(--ball-size); height: var(--ball-size);
+  display: grid; place-items: center; background: transparent; border: 0; cursor: pointer;
   z-index: 2001; isolation: isolate;
 }
 .nav-fab .dot{
@@ -179,101 +147,57 @@ html::after{
 @keyframes ballPulse{ 0%,100%{ transform: scale(1) } 50%{ transform: scale(1.04) } }
 
 .sidebar{
-  position: fixed;
-  inset: 0 auto 0 0;                  /* 左贴屏 */
-  width: 264px;
-  padding: 16px 16px 0;
-  display: flex; flex-direction: column;
-  overflow: hidden;
-
-  transform: translateX(-12px) scaleX(0);
-  transform-origin: left;
+  position: fixed; inset: 0 auto 0 0; width: 264px; padding: 16px 16px 0;
+  display: flex; flex-direction: column; overflow: hidden;
+  transform: translateX(-12px) scaleX(0); transform-origin: left;
   opacity: 0; pointer-events: none;
   transition: transform .22s ease, opacity .22s ease;
-
   background: var(--sidebar-bg);
   box-shadow: 0 18px 50px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.03);
   z-index: 3000;
-  backdrop-filter: none; -webkit-backdrop-filter: none;
 }
 .nav-launcher:hover .sidebar,
-.nav-launcher.is-open .sidebar{
-  transform: translateX(0) scaleX(1);
-  opacity: 1; pointer-events: auto;
-}
+.nav-launcher.is-open .sidebar{ transform: translateX(0) scaleX(1); opacity: 1; pointer-events: auto; }
 .sidebar, .sidebar *{ pointer-events: auto; }
 
 .sidebar .brand{
-  padding-left: var(--text-left) !important;
-  margin: 0 !important;
-  display: inline-flex; align-items: center;
-  height: var(--ball-size); line-height: var(--ball-size);
-  font-weight: 700; letter-spacing: .2px;
-  color: #e6f9ff;
+  padding-left: var(--text-left) !important; margin: 0 !important;
+  display: inline-flex; align-items: center; height: var(--ball-size);
+  font-weight: 700; letter-spacing: .2px; color: #e6f9ff;
   text-shadow: 0 0 4px rgba(0,229,255,.55), 0 0 12px rgba(43,116,255,.35);
   text-decoration: none;
 }
-
 .nav{ display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
 .nav-link{
-  position: relative;                    /* 让 ::before 定位不逃逸 */
-  display: flex; align-items: center; gap: 10px;
-  padding: 10px 12px 10px var(--text-left) !important;
-  border-radius: 12px;
-  color: rgba(236,244,255,.92);
-  text-decoration: none; background: transparent; border: 1px solid transparent;
+  position: relative; display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px 10px var(--text-left) !important; border-radius: 12px;
+  color: rgba(236,244,255,.92); text-decoration: none; background: transparent; border: 1px solid transparent;
   transition: all .25s ease;
 }
-.nav-link:hover{
-  color: #fff; transform: translateX(4px);
-  border-color: rgba(255,255,255,.08);
-  box-shadow: 0 0 12px rgba(111,102,255,.12);
-}
-.nav-link.is-active{
-  background: linear-gradient(90deg, rgba(168,223,255,.18), rgba(230,247,255,.12));
-  border-color: rgba(255,255,255,.10);
-}
+.nav-link:hover{ color:#fff; transform: translateX(4px); border-color: rgba(255,255,255,.08); box-shadow: 0 0 12px rgba(111,102,255,.12); }
+.nav-link.is-active{ background: linear-gradient(90deg, rgba(168,223,255,.18), rgba(230,247,255,.12)); border-color: rgba(255,255,255,.10); }
 .nav-link::before{
-  content:""; position: absolute; left: 12px;
-  width: var(--icon-size); height: var(--icon-size); background-color: #a9c7ff;
+  content:""; position: absolute; left: 12px; width: var(--icon-size); height: var(--icon-size); background-color: #a9c7ff;
   -webkit-mask: var(--icon) no-repeat center/contain; mask: var(--icon) no-repeat center/contain;
   transition: background-color .25s ease, box-shadow .25s ease, transform .25s ease;
 }
-.nav-link:hover::before{
-  background-color: var(--acc-cyan);
-  box-shadow: 0 0 10px rgba(0,229,255,.45), 0 0 18px rgba(122,92,255,.25);
-  transform: translateX(2px);
-}
+.nav-link:hover::before{ background-color: var(--acc-cyan); box-shadow: 0 0 10px rgba(0,229,255,.45), 0 0 18px rgba(122,92,255,.25); transform: translateX(2px); }
 
 /* Inline SVG icons via CSS variables */
 .nav-about{ --icon:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="white"><circle cx="12" cy="8" r="3"/><path d="M4 20a8 8 0 0 1 16 0H4Z"/></g></svg>'); }
 .nav-blog { --icon:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="white"><rect x="4" y="4" width="14" height="16" rx="2" ry="2"/><path d="M18 8l2 2-6 6h-2v-2l6-6Z"/></g></svg>'); }
 .nav-books{ --icon:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="white"><path d="M6 4h10a2 2 0 0 1 2 2v14H8a2 2 0 0 1-2-2V4Z"/><rect x="6" y="18" width="12" height="2"/></g></svg>'); }
 
-/* Sidebar scroll area & inner footer */
 .sidebar-content{ height: calc(100dvh - 56px); overflow-y: auto; padding-right: 8px; scrollbar-width: thin; }
-.sidebar-footer{
-  position: sticky; bottom: 0; padding: 12px 0 10px;
-  font-size: 12px; color: rgba(236,244,255,.65);
-  background: transparent; border-top: none; box-shadow: none;
-}
+.sidebar-footer{ position: sticky; bottom: 0; padding: 12px 0 10px; font-size: 12px; color: rgba(236,244,255,.65); background: transparent; }
 
-/* ---------- Accessibility: Skip Link ---------- */
+/* ---------- Accessibility ---------- */
 .skip-link{
   position: fixed; left: -9999px; top: 12px; z-index: 3000;
-  padding: 8px 12px; border-radius: 10px;
-  background: rgba(255,255,255,.95); color: #0b0e12;
-  box-shadow: 0 8px 20px rgba(0,0,0,.15);
-  text-decoration: none;
+  padding: 8px 12px; border-radius: 10px; background: rgba(255,255,255,.95); color: #0b0e12;
+  box-shadow: 0 8px 20px rgba(0,0,0,.15); text-decoration: none;
 }
 .skip-link:focus-visible{ left: 12px; }
-.skip-link:focus{ left: -9999px; }
-
-.sr-only{
-  position: absolute !important; width: 1px !important; height: 1px !important;
-  padding: 0 !important; margin: -1px !important; overflow: hidden !important;
-  clip: rect(0,0,0,0) !important; white-space: nowrap !important; border: 0 !important;
-}
 
 /* ---------- Reading Mode ---------- */
 body.reading{ background: #0a0f2c; color: #f1f5f9; }
@@ -282,128 +206,19 @@ body.reading .container{
   border: 1px solid rgba(255,255,255,.08); box-shadow: 0 8px 30px rgba(0,0,0,.6);
 }
 
-/* ---------- Animations & Effects ---------- */
-@keyframes fx-fade-up{
-  from{ opacity: 0; transform: translate3d(0,8px,0); }
-  to  { opacity: 1; transform: none; }
-}
+/* ---------- Lists / Blog ---------- */
+.blog-list{ margin: 0 0 2rem 1.25rem; padding: 0; }
+.blog-list li{ margin: .5rem 0; }
+
+/* 首页 CTA：保证无底色 */
+.home-cta{ margin: 8px 0 0; }
+.home-cta a{ background: transparent !important; text-decoration: underline; padding: 0; }
+
+/* ---------- Animations ---------- */
+@keyframes fx-fade-up{ from{ opacity:0; transform: translate3d(0,8px,0) } to{ opacity:1; transform:none } }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 880px){
   .sidebar{ width: 82vw; }
   .container{ margin: 84px 12px 24px; max-width: none; }
-}
-
-
-/* 布局基础：让 footer 贴底但不拉长页面 */
-html, body { height: 100%; margin: 0; }
-body { display: flex; min-height: 100vh; flex-direction: column; }
-main, .site-main { flex: 1; }              /* 兼容你用不用 .site-main */
-
-footer { margin-top: auto; }
-/* 默认：所有页面粘底 */
-footer { margin-top: auto; }
-
-/* 首页：页脚紧跟内容（不要把中间空出来） */
-body.home footer.site-footer { 
-  margin-top: 0;   /* 你也可以设为 0，看你想要的间距 */
-}
-
-.site-footer, .container--footer {
-  display: flex;
-  justify-content: center;                  /* 水平居中 */
-  align-items: center;                      /* 垂直居中（如果多行也会居中） */
-  text-align: center;
-}
-
-/* blog 列表的默认间距，避免 ul 造成大空白 */
-.blog-list {
-  margin: 0 0 2rem 1.25rem; /* 去掉默认大 margin，只保留底部间距 */
-  padding: 0;
-}
-.blog-list li { margin: 0.5rem 0; }
-
-/* 若你有给 .container/.content 设置了 min-height:150vh/200vh，请删掉或改为 auto */
-
-/* 1) 页脚强制透明，去掉任何阴影/边框 */
-footer.site-footer,
-footer.site-footer::before,
-footer.site-footer::after,
-.container--footer {
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
-}
-
-/* 2) 首页：页脚紧跟内容，不要“中间大块深色” */
-body.home main,
-body.home main.site-main { flex: 0; min-height: auto; }
-body.home footer.site-footer { margin-top: 16px; }
-body.home main .container > :last-child { margin-bottom: 0; }
-
-/* 3) 降低 html::after 的覆盖强度，并在最底部做渐隐 */
-html::after { opacity: .35; mix-blend-mode: normal; }
-@supports (mask-image: linear-gradient(#000, #000)) {
-  html::after{
-    mask-image: linear-gradient(to bottom,
-      #000 0%, #000 78%, transparent 98%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom,
-      #000 0%, #000 78%, transparent 98%, transparent 100%);
-  }
-}
-
-/* 4) 万一是扩展注入的底部条，直接隐藏（仅站点作用） */
-[class*="glasp-"],
-#otherside-root,
-#olaso-extension-toast-container,
-deepl-input-controller { display: none !important; }
-
-
-/* 首页不拉伸；footer 跟内容走 */
-body.home main,
-body.home main.site-main { flex: 0; min-height: auto; }
-body.home footer.site-footer { margin-top: 16px; }
-
-/* footer 强制透明，不阴影不边框 */
-footer.site-footer,
-footer.site-footer::before,
-footer.site-footer::after,
-.container--footer {
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
-}
-
-/* 可选：首页彻底关闭噪声层 */
-body.home ~ html::after { opacity: 0 !important; }  /* 某些浏览器不支持：此行可能无效 */
-
-/* A. 全站先关掉噪声层，确认问题来自背景伪元素 */
-html::after { content: none !important; }
-
-/* B. 首页：footer 跟内容走，且确保透明 */
-body.home main,
-body.home main.site-main { flex: 0; min-height: auto; }
-body.home footer.site-footer { margin-top: 16px; }
-footer.site-footer,
-footer.site-footer::before,
-footer.site-footer::after,
-.container--footer { background: transparent !important; border: 0 !important; box-shadow: none !important; }
-
-
-/* kill 背景噪声层，避免在底部叠出“黑带” */
-html::before, html::after { content: none !important; display: none !important; }
-
-/* 首页：main 不拉满，footer 跟内容走 */
-body.home main,
-body.home main.site-main { flex: 0 !important; min-height: auto !important; }
-body.home footer.site-footer { margin-top: 16px !important; }
-
-/* footer 强制透明，不阴影不边框 */
-footer.site-footer,
-footer.site-footer::before,
-footer.site-footer::after,
-.container--footer {
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: none !important;
 }
