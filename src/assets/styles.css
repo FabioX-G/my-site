@@ -376,3 +376,15 @@ footer.site-footer::after,
 
 /* 可选：首页彻底关闭噪声层 */
 body.home ~ html::after { opacity: 0 !important; }  /* 某些浏览器不支持：此行可能无效 */
+
+/* A. 全站先关掉噪声层，确认问题来自背景伪元素 */
+html::after { content: none !important; }
+
+/* B. 首页：footer 跟内容走，且确保透明 */
+body.home main,
+body.home main.site-main { flex: 0; min-height: auto; }
+body.home footer.site-footer { margin-top: 16px; }
+footer.site-footer,
+footer.site-footer::before,
+footer.site-footer::after,
+.container--footer { background: transparent !important; border: 0 !important; box-shadow: none !important; }
