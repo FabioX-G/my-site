@@ -82,18 +82,24 @@ html::before{
 }
 
 /* ::after — 细腻噪声与扫描线，制造科幻质感 */
+/* 细噪声层：整体更淡，并在靠近底部做渐隐，避免形成“黑带”错觉 */
 html::after{
   background:
-    /* 细噪：不规则点阵 */
     repeating-radial-gradient(circle at 20% 30%, rgba(255,255,255,.018) 0 2px, transparent 2px 6px),
-    /* 扫描线：极细的水平线 */
     repeating-linear-gradient( to bottom, rgba(255,255,255,.025) 0 1px, transparent 1px 3px);
-  mix-blend-mode: overlay;
-  opacity: .6;
+  mix-blend-mode: normal;
+  opacity: .22;
   animation: noiseShift 11s linear infinite;
   will-change: background-position;
 }
-
+@supports (mask-image: linear-gradient(#000, #000)) {
+  html::after{
+    mask-image: linear-gradient(to bottom,
+      #000 0%, #000 78%, transparent 96%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom,
+      #000 0%, #000 78%, transparent 96%, transparent 100%);
+  }
+}
 @keyframes bgDrift{
   0%,100% { transform: translate3d(0,0,0) }
   50%     { transform: translate3d(2.2%, -1.8%, 0) }
@@ -351,3 +357,22 @@ html::after { opacity: .35; mix-blend-mode: normal; }
 #otherside-root,
 #olaso-extension-toast-container,
 deepl-input-controller { display: none !important; }
+
+
+/* 首页不拉伸；footer 跟内容走 */
+body.home main,
+body.home main.site-main { flex: 0; min-height: auto; }
+body.home footer.site-footer { margin-top: 16px; }
+
+/* footer 强制透明，不阴影不边框 */
+footer.site-footer,
+footer.site-footer::before,
+footer.site-footer::after,
+.container--footer {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* 可选：首页彻底关闭噪声层 */
+body.home ~ html::after { opacity: 0 !important; }  /* 某些浏览器不支持：此行可能无效 */
