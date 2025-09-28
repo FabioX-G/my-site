@@ -127,13 +127,6 @@ html::after{
   will-change: opacity, transform;
 }
 
-/* 页面级 Flex：主内容撑满，footer 贴底 */
-body.site{
-  min-height: 100svh;                 /* 动态视口高度，移动端更稳 */
-  display: flex;
-  flex-direction: column;
-}
-.site-main{ flex: 1; }
 
 /* Footer：贴底且与正文左缘对齐（通过 .container--footer） */
 .site-footer{
@@ -299,9 +292,15 @@ body.reading .container{
 /* 布局基础：让 footer 贴底但不拉长页面 */
 html, body { height: 100%; margin: 0; }
 body { display: flex; min-height: 100vh; flex-direction: column; }
-main { flex: 1; }           /* 确保主体区域占满剩余高度 */
-footer { margin-top: auto; 
-        align: middle}
+main, .site-main { flex: 1; }              /* 兼容你用不用 .site-main */
+
+footer { margin-top: auto; }
+.site-footer, .container--footer {
+  display: flex;
+  justify-content: center;                  /* 水平居中 */
+  align-items: center;                      /* 垂直居中（如果多行也会居中） */
+  text-align: center;
+}
 
 /* blog 列表的默认间距，避免 ul 造成大空白 */
 .blog-list {
