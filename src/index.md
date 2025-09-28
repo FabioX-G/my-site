@@ -27,4 +27,6 @@ In my free time, I enjoy reading [books](/library/) about science and technology
 
 
 
-[See all essays →](/blog/) · [My book shelf →](/library/)
+<p class="home-cta">
+  <a href="/blog/">See all essays →</a> · <a href="/library/">My book shelf →</a>
+</p>
