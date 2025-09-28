@@ -1,10 +1,10 @@
 ---
 layout: layouts/post.njk   # 已在 posts.json 里也会默认加到位
 title: The Secret of Life 人生的秘诀   # 必填！没有就不会出现在列表
-date: 2022-05-02           # 建议用 YYYY-MM-DD
-description: 可选的一句话摘要
-reading: true              # 可选：是否显示“继续阅读”等
-draft: false               # 可选：写草稿就先 true，本地可见、线上不发（如需我可帮你加草稿逻辑）
+date: 2022-05-02  # 建议用 YYYY-MM-DD
+tags: essay
+reading: true      # 可选：是否显示“继续阅读”等
+draft: false     # 可选：写草稿就先 true，本地可见、线上不发（如需我可帮你加草稿逻辑）
 ---
 
 # The Secret of Life

@@ -1,6 +1,6 @@
 ---
 layout: layouts/base.njk
-title: 博客文章
+title: Blog
 ---
 
 {% for post in collections.blogDesc %}
