@@ -392,3 +392,18 @@ footer.site-footer::after,
 
 /* kill 背景噪声层，避免在底部叠出“黑带” */
 html::before, html::after { content: none !important; display: none !important; }
+
+/* 首页：main 不拉满，footer 跟内容走 */
+body.home main,
+body.home main.site-main { flex: 0 !important; min-height: auto !important; }
+body.home footer.site-footer { margin-top: 16px !important; }
+
+/* footer 强制透明，不阴影不边框 */
+footer.site-footer,
+footer.site-footer::before,
+footer.site-footer::after,
+.container--footer {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
