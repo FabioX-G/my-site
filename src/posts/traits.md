@@ -1,6 +1,6 @@
 ---
 layout: layouts/post.njk
-date: 2025-09-27
+date: 2024-09-27
 reading: true
 title: 创新者的五个人格特质
 ---
