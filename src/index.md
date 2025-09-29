@@ -6,17 +6,14 @@ home: true
 
 # Welcome to my site!
 
-I'm Fabio. I'm a 25-year-old founder currently building my startup **Amora Vida** (real estate development) in Seixal, Portugal.
+This is Fabio. I currently live in Portugal and work at **[Amora Vida](https://www.amora-vida.com/)**.
+
+I grew up in Shanghai, China, and previously studied at Syracuse University. (More [about me](/about/))
 
 I share my [thoughts](/blog/) here from time to time to think and reflect.
 
-In my free time, I enjoy reading [books](/library/) about science and technology, training Muay Thai, playing soccer, and spending time with my 10-year-old brother Jason (we play Brawl Stars & FC Mobile, and read before bedtime).
+In my free time, I enjoy reading nonfiction [books](/library/), training Muay Thai, playing soccer, and spending time with my 10-year-old brother Jason (we play Brawl Stars & FC Mobile, and read comics before bedtime).
 
-- **2000** — Born in Lisbon, Portugal 🇵🇹  
-- **2005–2019** — Grew up in Shanghai, China 🇨🇳  
-- **2019–2024** — Studied *Environment, Sustainability, and Policy* and *Entrepreneurship and Emerging Enterprises* at Syracuse University 🇺🇸  
-  *(After junior year, I moved to Thailand 🇹🇭 with my family and spent more than a year there, before going back to finish my bachelor's degree.)*  
-- **2025–now** — Building **Amora Vida Lda.** in Portugal
 
 ## Latest Essays
 {% for post in collections.essay | sort(attribute='date') | reverse %}
@@ -28,5 +25,7 @@ In my free time, I enjoy reading [books](/library/) about science and technology
 
 
 <p class="home-cta">
-  <a href="/blog/">See all essays →</a> · <a href="/library/">My book shelf →</a>
+  · <a href="/blog/">See all essays →</a> 
+  · <a href="/library/">My bookshelf →</a>
+  · <a href="/quotes/">Quotes →</a>
 </p>
