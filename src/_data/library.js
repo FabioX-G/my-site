@@ -166,7 +166,7 @@ module.exports = [
   { title: "The Enlightenment: The Pursuit of Happiness 1680–1790", author: "Ritchie Robertson", year: 2020, asin: "024100482X" },
   { title: "Power and Progress: Our Thousand-Year Struggle Over Technology and Prosperity", author: "Daron Acemoglu & Simon Johnson", year: 2023, asin: "1541702530" },
   { title: "Principles of Neural Science (6th ed.)", author: "Eric R. Kandel, John H. Schwartz, Thomas M. Jessell, et al.", year: 2021, asin: "1259642232" },
-  { title: "The Muscle Ladder", author: "Jeff Nippard", year: 2023, asin: "1990766065" },
+  { title: "The Muscle Ladder", author: "Jeff Nippard", year: 2023, asin: "1628604867" },
   { title: "Bird: The Definitive Visual Guide", author: "DK / BirdLife International", year: 2022, asin: "0744029891" },
   { title: "How to ADHD: An Insider’s Guide to Working with Your Brain (Not Against It)", author: "Jessica McCabe", year: 2024, asin: "059357987X" },
   { title: "Universe: The Definitive Visual Guide", author: "DK", year: 2020, asin: "1465499957" },
