@@ -1,6 +1,6 @@
 ---
 layout: layouts/base.njk
-title: 关于我
+title: About Me 关于我
 ---
 
 # 关于我

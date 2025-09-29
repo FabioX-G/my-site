@@ -50,7 +50,7 @@
 
   {# ───────── 主内容区域（唯一的主容器）───────── #}
   <main  class="site-main" role="main" tabindex="-1">
-    <div class="container">
+    <div class="container {{ bodyClass | default('') }} ">
       {{ content | safe }}
     </div>
   </main>

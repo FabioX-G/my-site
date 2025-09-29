@@ -231,3 +231,19 @@ main .container h2:first-child { margin-top: 0; }
 
 /* 标题与正文的间距微调（更好看） */
 main .container h1 { margin-bottom: .6em; }
+
+/* Books list base */
+.books { list-style: none; padding-left: 0; margin: 1rem 0; }
+.book { margin: .5rem 0; }
+.book a { text-decoration: none; }
+
+/* Highlights */
+.book.favorite a { color: #e76033; font-weight: 700; }  /* red */
+.book.good a     { color: #11c0af; font-weight: 600; }  /* deep blue */
+.book.okay a     { color: #1278b8; }                    /* teal-ish */
+
+
+/* Make pages start near the top, Patrick Collison-style */
+main.container { padding-top: 0.5rem; }           /* or 0 */
+main.container > *:first-child { margin-top: 0; }  /* kill heading’s top margin */
+h1:first-child { margin-top: 0; }                  /* extra safety */

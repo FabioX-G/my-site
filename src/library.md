@@ -2,6 +2,7 @@
 layout: layouts/base.njk
 title: 我的书架
 permalink: /library/index.html
+bodyClass: page--tight-top
 ---
 
 # 我的书架
