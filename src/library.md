@@ -1,17 +1,27 @@
 ---
 layout: layouts/base.njk
-title: 我的书架
+title: Bookshelf
 permalink: /library/index.html
 bodyClass: page--tight-top
 ---
 
-# 我的书架
-我读过/在读的书（持续更新）。🌟 = 强烈推荐
+# Bookshelf
+Below are some of the physical books that I own on my bookshelf. 
 
-{% set list = library | sort(attribute='author') %}
+I highlight my "personal favorite" books in orange, and the ones that I think are "really worth reading" in green. Most books are in standard blue, but they were all once or still interesting to me when I bought them. Some books I only looked at the first few chapters and started exploring other books. 
+
+🌟 = Personal Favorite
+
+{% set list = library | sort(false, false, 'author') %}
 <ul class="books">
 {% for b in list %}
-  {% set amz = b.amazon or ("https://www.amazon.com/dp/" + b.asin + (site.amazonTag ? ("?tag=" + site.amazonTag) : "")) %}
+  {% set amz = b.amazon %}
+  {% if not amz %}
+    {% set amz = "https://www.amazon.com/dp/" ~ b.asin %}
+    {% if site.amazonTag %}
+      {% set amz = amz ~ "?tag=" ~ site.amazonTag %}
+    {% endif %}
+  {% endif %}
   <li class="book{% if b.highlight %} {{ b.highlight }}{% endif %}">
     <strong><a href="{{ amz }}" target="_blank" rel="noopener">{{ b.title }}</a></strong>
     — {{ b.author }}{% if b.year %}（{{ b.year }}）{% endif %}

@@ -1,0 +1,182 @@
+/**
+ * Single source of truth for your bookshelf.
+ * Fields:
+ *  - title: string (required)
+ *  - author: string (required; "A & B" for multiple)
+ *  - year: number | null (required key; use null until you confirm)
+ *  - asin: Amazon ASIN string (optional but recommended)
+ *  - highlight: "favorite" | "good" | "okay" | undefined (optional)
+ *  - tags: string[] (optional)
+ *
+ * Tip: keep unknown years as null, then fill them over time.
+ * Eleventy will import this exactly like JSON.
+ */
+
+/**
+ * Bookshelf data (clean).
+ * Required fields per book:
+ *   title, author, year (number), asin (Amazon ASIN = ISBN-10 for most books)
+ * Optional:
+ *   highlight: "favorite" | "good" | "okay"
+ *   tags: string[]
+ */
+/**
+ * Bookshelf data (clean).
+ * Required per book: title, author, year (number), asin (ISBN-10/ASIN).
+ * Optional: highlight: "favorite" | "good" | "okay", tags: string[]
+ */
+
+module.exports = [
+  // — Recent adds —
+  { title: "The Technological Republic: Hard Power, Soft Belief, and the Future of the West", author: "Alexander C. Karp & Nicholas W. Zamiska", year: 2025, asin: "0593798694" },
+  { title: "Source Code: My Beginnings", author: "Bill Gates", year: 2025, asin: "059380158X" },
+  { title: "Prefabrication and the Re-Evolution of Construction", author: "Marty Corrado", year: 2021, asin: "B09B63LFFZ" },
+  { title: "Spectacular Flops: Game-Changing Technologies That Failed", author: "Michael Brian Schiffer", year: 2019, asin: "0989824993" },
+  { title: "Build", author: "Tony Fadell", year: 2022, asin: "0063046067"},
+  { title: "No Rules Rules", author: "Reed Hastings & Erin Meyer", year: 2020, asin: "1984877860" },
+  { title: "Measure What Matters", author: "John Doerr", year: 2018, asin: "0525536221" },
+  { title: "How Big Things Get Done", author: "Bent Flyvbjerg & Dan Gardner", year: 2023, asin: "0593239512" },
+  { title: "Why Nations Fail", author: "Daron Acemoglu & James A. Robinson", year: 2012, asin: "0307719227" },
+  { title: "Never Split the Difference", author: "Chris Voss", year: 2016, asin: "0062407805" },
+  { title: "Introduction to Classical Mechanics", author: "David Morin", year: 2008, asin: "0521876222" },
+  { title: "The Beginning of Infinity", author: "David Deutsch", year: 2011, asin: "0143121359" },
+  { title: "Materials and Dematerialization", author: "Vaclav Smil", year: 2013, asin: "1119942535" },
+  { title: "What Is Life?", author: "Paul Nurse", year: 2020, asin: "0393541152" },
+  { title: "The Next 500 Years", author: "Christopher E. Mason", year: 2021, asin: "0262044392" },
+  { title: "Nudge: The Final Edition", author: "Richard H. Thaler & Cass R. Sunstein", year: 2021, asin: "014313700X" },
+  { title: "Think Again", author: "Adam Grant", year: 2021, asin: "1984878107" },
+  { title: "The Great Divergence", author: "Kenneth Pomeranz", year: 2000, asin: "0691156103" },
+  { title: "Your Life Is Manufactured", author: "Tim Minshall", year: 2023, asin: "1800762574" },
+  { title: "Connect", author: "David Bradford & Carole Robin", year: 2021, asin: "0593237099" },
+  { title: "The Nature of Technology", author: "W. Brian Arthur", year: 2009, asin: "1416544062", highlight: "favorite" },
+  { title: "The Tower and the Bridge", author: "David P. Billington", year: 1983, asin: "0465081813" },
+  { title: "To Explain the World", author: "Steven Weinberg", year: 2015, asin: "0062346652", highlight: "good" },
+  { title: "The Fabric of Reality", author: "David Deutsch", year: 1997, asin: "014027541X" },
+  { title: "The Great Transformation", author: "Karl Polanyi", year: 1944, asin: "080705643X" },
+  { title: "The Structure of Scientific Revolutions", author: "Thomas S. Kuhn", year: 1962, asin: "0226458121", highlight: "good" },
+  { title: "Material World", author: "Ed Conway", year: 2023, asin: "0593489447" },
+  { title: "Where Is My Flying Car?", author: "J. Storrs Hall", year: 2021, asin: "1732265171" },
+  { title: "Capital and Ideology", author: "Thomas Piketty", year: 2019, asin: "0674980824" },
+
+  // — Resolved items —
+  { title: "The Scapegoat", author: "René Girard", year: 1989, asin: "0801839173" },
+  { title: "A New World Begins: The History of the French Revolution", author: "Jeremy D. Popkin", year: 2019, asin: "0465096664" },
+  { title: "Ignorance: A Global History", author: "Peter Burke", year: 2023, asin: "0300260215" },
+  { title: "The Dawn of Everything", author: "David Graeber & David Wengrow", year: 2021, asin: "0374157359" },
+  { title: "The Dawn of Modern Cosmology: From Copernicus to Newton", author: "Aviva Rothman (ed.)", year: 2024, asin: "0241360633" },
+  { title: "How to Read a Book", author: "Mortimer J. Adler & Charles Van Doren", year: 1972, asin: "0671212095" },
+  { title: "The Second Machine Age", author: "Erik Brynjolfsson & Andrew McAfee", year: 2014, asin: "0393350649" },
+  { title: "Pump: A Natural History of the Heart", author: "Bill Schutt", year: 2021, asin: "1643138302" },
+  { title: "The Clockwork Universe", author: "Edward Dolnick", year: 2011, asin: "0061719537" },
+  { title: "The Complete Essays", author: "Michel de Montaigne (tr. M. A. Screech)", year: 2003, asin: "0140446044" },
+  { title: "The Art of the Personal Essay", author: "Phillip Lopate (ed.)", year: 1994, asin: "038542339X" },
+  { title: "How to Feed the World", author: "Vaclav Smil", year: 2023, asin: "1509541605" },
+  { title: "The Dealmaker", author: "Guy Hands", year: 2021, asin: "1787633931" },
+  { title: "A Beautiful Question: Finding Nature’s Deep Design", author: "Frank Wilczek", year: 2015, asin: "0143109367" },
+  { title: "The Prize: The Epic Quest for Oil, Money, and Power", author: "Daniel Yergin", year: 1990, asin: "0671799320" },
+  { title: "Life 3.0", author: "Max Tegmark", year: 2017, asin: "1101970316" },
+  { title: "A Theater of Envy: William Shakespeare", author: "René Girard", year: 1991, asin: "159368006X" },
+  { title: "China’s Gilded Age", author: "Yuen Yuen Ang", year: 2020, asin: "110894023X" },
+  { title: "Read Write Own", author: "Chris Dixon", year: 2024, asin: "0593715477" },
+  { title: "Francis Bacon: The Major Works", author: "Francis Bacon", year: 2008, asin: "0199540794" },
+  { title: "Dialogue on the Two Chief World Systems", author: "Galileo Galilei", year: 2008, asin: "0199559334" },
+  { title: "On the Origin of Species", author: "Charles Darwin", year: 2008, asin: "0199219222" },
+  { title: "The Milestones of Science: How We Came to Understand the Universe", author: "James D. Stein", year: 2023, asin: "1633888487" },
+  { title: "The Cold Start Problem", author: "Andrew Chen", year: 2021, asin: "0062969746" },
+  { title: "Antifragile", author: "Nassim Nicholas Taleb", year: 2012, asin: "0812979680" },
+  { title: "Skin in the Game", author: "Nassim Nicholas Taleb", year: 2018, asin: "042528462X" },
+  { title: "The Black Swan", author: "Nassim Nicholas Taleb", year: 2007, asin: "081297381X", highlight: "good" },
+  { title: "Fooled by Randomness", author: "Nassim Nicholas Taleb", year: 2001, asin: "0812975219" },
+  { title: "European Intellectual History from Rousseau to Nietzsche", author: "Frank M. Turner (ed. Richard A. Lofthouse)", year: 2016, asin: "0300219482" },
+  { title: "On the Medieval Origins of the Modern State", author: "Joseph R. Strayer", year: 1970, asin: "0691029105" },
+  { title: "Quantum Computing: From Colossus to Qubits", author: "John Gribbin", year: 2017, asin: "1785784967" },
+  { title: "Letters from a Stoic", author: "Seneca (tr. Robin Campbell)", year: 1969, asin: "0140442103" },
+  { title: "Dialogues and Essays", author: "Seneca (ed. John Davie)", year: 2007, asin: "0199552401" },
+  { title: "All Desire Is a Desire for Being", author: "René Girard", year: 2022, asin: "1611864021", highlight: "favorite" },
+  { title: "Our Mathematical Universe", author: "Max Tegmark", year: 2014, asin: "0307744256" },
+  { title: "Introduction to Electrodynamics (4th ed.)", author: "David J. Griffiths", year: 2013, asin: "0321856562" },
+  { title: "Probability for the Enthusiastic Beginner", author: "David J. Morin", year: 2016, asin: "1523318678" },
+  { title: "Electricity and Magnetism (3rd ed.)", author: "Edward M. Purcell & David J. Morin", year: 2013, asin: "1107014026" },
+  { title: "Proof and the Art of Mathematics", author: "Joel David Hamkins", year: 2020, asin: "0262539597" },
+  { title: "Differential Equations and Linear Algebra", author: "Gilbert Strang", year: 2014, asin: "0980232791" },
+  { title: "A Mathematician’s Lament", author: "Paul Lockhart", year: 2009, asin: "1934137170" },
+  { title: "Fractal Worlds", author: "Michael Frame & Amelia Urry", year: 2016, asin: "0300197877" },
+  { title: "Mathematical Methods for Physics and Engineering (3rd ed.)", author: "K. F. Riley, M. P. Hobson & S. J. Bence", year: 2006, asin: "0521679710" },
+  { title: "How to Solve It", author: "George Pólya", year: 1945, asin: "069116407X" },
+  { title: "Introduction to Classical and Quantum Computing", author: "Thomas G. Wong", year: 2021, asin: "1712324358" },
+  { title: "Elon Musk", author: "Walter Isaacson", year: 2023, asin: "1982181280" },
+  { title: "How the World Made the West", author: "Josephine Quinn", year: 2024, asin: "1541622661" },
+  { title: "The Road to Reality", author: "Roger Penrose", year: 2004, asin: "0679776311" },
+  { title: "Thinking, Fast and Slow", author: "Daniel Kahneman", year: 2011, asin: "0374533555" },
+  { title: "The Rational Optimist", author: "Matt Ridley", year: 2010, asin: "0061452068" },
+  { title: "On Gravity", author: "A. Zee", year: 2013, asin: "069114558X" },
+  { title: "The Singularity Is Nearer", author: "Ray Kurzweil", year: 2024, asin: "0593539641" },
+  { title: "How the Victorians Took Us to the Moon", author: "Iwan Rhys Morus", year: 2023, asin: "1639363687" },
+  { title: "Faraday, Maxwell, and the Electromagnetic Field", author: "Nancy Forbes & Basil Mahon", year: 2014, asin: "1616149426" },
+  { title: "Gene Machine", author: "Venki Ramakrishnan", year: 2018, asin: "0465093363" },
+  { title: "The Character of Physical Law", author: "Richard P. Feynman", year: 1965, asin: "0262533416" },
+  { title: "Too Big for a Single Mind", author: "Tobias Hürter", year: 2023, asin: "1615199209" },
+  { title: "Alex’s Adventures in Numberland", author: "Alex Bellos", year: 2010, asin: "1416588253" }, // US: "Here's Looking at Euclid"
+  { title: "Superintelligence", author: "Nick Bostrom", year: 2014, asin: "0198739834" },
+  { title: "Totally Random", author: "Jeffrey Bub & Tanya Bub", year: 2018, asin: "0691183565" },
+  { title: "The Discrete Charm of the Machine", author: "Ken Steiglitz", year: 2019, asin: "069119054X" },
+  { title: "My Inventions and Other Writings", author: "Nikola Tesla", year: 2011, asin: "0143106619" },
+  { title: "Origin Story", author: "David Christian", year: 2018, asin: "0316392006" },
+  { title: "The New Science of Strong Materials", author: "J. E. Gordon", year: 1968, asin: "0140135979" },
+  { title: "To Engineer Is Human", author: "Henry Petroski", year: 1985, asin: "0679734163" },
+  { title: "Poor Charlie’s Almanack", author: "Charles T. Munger", year: 2005, asin: "1578645018", highlight: "good" },
+  { title: "Why We Die", author: "Venki Ramakrishnan", year: 2023, asin: "154160439X" },
+  { title: "The Skeptics’ Guide to the Future", author: "Steven Novella, Bob Novella & Jay Novella", year: 2022, asin: "153870954X" },
+  { title: "Insanely Great", author: "Steven Levy", year: 1994, asin: "014200135X" },
+  { title: "The Idea Factory", author: "Jon Gertner", year: 2012, asin: "0143122797" },
+  { title: "Something Incredibly Wonderful Happens", author: "K. C. Cole", year: 2009, asin: "0670021625" },
+  { title: "Invention and Innovation", author: "Vaclav Smil", year: 2023, asin: "0262048053" },
+  { title: "Scaling People", author: "Claire Hughes Johnson", year: 2023, asin: "1953953214" },
+  { title: "High Growth Handbook", author: "Elad Gil", year: 2018, asin: "1732265104" },
+  { title: "The Dream Machine: J.C.R. Licklider and the Revolution That Made Computing Personal", author: "M. Mitchell Waldrop", year: 2018, asin: "1732265119" },
+  { title: "Revolution in Miniature (2nd ed.)", author: "Ernest Braun & Stuart Macdonald", year: 1982, asin: "0521318606" },
+  { title: "Pieces of the Action", author: "Vannevar Bush", year: 2022, asin: "0262544346" },
+  { title: "The Big Score", author: "Michael S. Malone", year: 1985, asin: "0385231170" },
+  { title: "Six Easy Pieces", author: "Richard P. Feynman", year: 1994, asin: "0465025277" },
+  { title: "The Conservative Futurist", author: "James Pethokoukis", year: 2023, asin: "1952223380" },
+  { title: "A City on Mars", author: "Kelly & Zach Weinersmith", year: 2023, asin: "0593184642" },
+  { title: "Elements of Euclid (Oliver Byrne Edition)", author: "Oliver Byrne", year: 2010, asin: "3836510369" },
+  { title: "Creating and Transforming the Twentieth Century", author: "Vaclav Smil", year: 2006, asin: "0195168745" },
+  { title: "The Lessons of History", author: "Will Durant & Ariel Durant", year: 1968, asin: "0671723653" },
+  { title: "Conquerors: How Portugal Forged the First Global Empire", author: "Roger Crowley", year: 2015, asin: "0812994000" },
+  { title: "The Fabric of Civilization", author: "Virginia Postrel", year: 2020, asin: "1541619748" },
+  { title: "How Innovation Works", author: "Matt Ridley", year: 2020, asin: "0062948983" },
+  { title: "Things Hidden Since the Foundation of the World", author: "René Girard", year: 1987, asin: "0804722153" },
+  { title: "The Mimetic Brain", author: "Jean-Michel Oughourlian", year: 2016, asin: "1611862177" },
+  { title: "The Genesis of Desire", author: "Jean-Michel Oughourlian", year: 2010, asin: "1611862061" },
+
+  { title: "Outlive: The Science & Art of Longevity", author: "Peter Attia with Bill Gifford", year: 2023, asin: "0593236599" },
+  { title: "Good Energy", author: "Casey Means with Calley Means", year: 2024, asin: "0593716228" },
+  { title: "Why Greatness Cannot Be Planned: The Myth of the Objective", author: "Kenneth O. Stanley & Joel Lehman", year: 2015, asin: "3319155237" },
+  { title: "Founders at Work: Stories of Startups’ Early Days", author: "Jessica Livingston", year: 2007, asin: "1590599148" },
+  { title: "The Song of the Cell: An Exploration of Medicine and the New Human", author: "Siddhartha Mukherjee", year: 2022, asin: "1982117354" },
+  { title: "Becoming Steve Jobs", author: "Brent Schlender & Rick Tetzeli", year: 2015, asin: "0385347421" },
+  { title: "The Fifteen Decisive Battles of the World", author: "E. S. Creasy", year: 1851, asin: "0486411214" },
+  { title: "Noise: A Flaw in Human Judgment", author: "Daniel Kahneman, Olivier Sibony & Cass R. Sunstein", year: 2021, asin: "0316451401" },
+  { title: "How History Gets Things Wrong: The Neuroscience of Our Addiction to Stories", author: "Alex Rosenberg", year: 2018, asin: "0262039515" },
+  { title: "The Hidden Globe", author: "Atossa Araxia Abrahamian", year: 2024, asin: "1250833508" },
+  { title: "A Little History of Religion", author: "Richard Holloway", year: 2016, asin: "0300208839" },
+  { title: "A Little History of Science", author: "William Bynum", year: 2013, asin: "0300197133" },
+  { title: "Originals: How Non-Conformists Move the World", author: "Adam Grant", year: 2016, asin: "0525429565" },
+  { title: "The Box: How the Shipping Container Made the World Smaller and the World Economy Bigger (Updated)", author: "Marc Levinson", year: 2016, asin: "0691170829" },
+  { title: "The Enlightenment: The Pursuit of Happiness 1680–1790", author: "Ritchie Robertson", year: 2020, asin: "024100482X" },
+  { title: "Power and Progress: Our Thousand-Year Struggle Over Technology and Prosperity", author: "Daron Acemoglu & Simon Johnson", year: 2023, asin: "1541702530" },
+  { title: "Principles of Neural Science (6th ed.)", author: "Eric R. Kandel, John H. Schwartz, Thomas M. Jessell, et al.", year: 2021, asin: "1259642232" },
+  { title: "The Muscle Ladder", author: "Jeff Nippard", year: 2023, asin: "1990766065" },
+  { title: "Bird: The Definitive Visual Guide", author: "DK / BirdLife International", year: 2022, asin: "0744029891" },
+  { title: "How to ADHD: An Insider’s Guide to Working with Your Brain (Not Against It)", author: "Jessica McCabe", year: 2024, asin: "059357987X" },
+  { title: "Universe: The Definitive Visual Guide", author: "DK", year: 2020, asin: "1465499957" },
+  { title: "The Pursuit of Glory: The Five Revolutions that Made Modern Europe, 1648–1815", author: "Tim Blanning", year: 2007, asin: "0140289844" },
+  { title: "The Lives of a Cell", author: "Lewis Thomas", year: 1974, asin: "0140047431" },
+  { title: "The Grapes of Wrath", author: "John Steinbeck", year: 1939, asin: "0143039431" },
+  { title: "Longitude", author: "Dava Sobel", year: 1995, asin: "0140258795" },
+  { title: "Network Medicine: Complex Systems in Human Disease", author: "Joseph Loscalzo, Albert-László Barabási & Edwin K. Silverman", year: 2017, asin: "0674971738" },
+  { title: "Fossil Future", author: "Alex Epstein", year: 2022, asin: "0593420418" },
+  { title: "Invention: A Life", author: "James Dyson", year: 2021, asin: "1982186451" },
+  { title: "Elementary Particles and the Laws of Physics: The 1986 Dirac Memorial Lectures", author: "Richard P. Feynman & Steven Weinberg", year: 1987, asin: "0521658624" }
+];

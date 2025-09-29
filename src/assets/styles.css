@@ -22,6 +22,9 @@
   --ball-left: 16px;
 
   --sidebar-bg: linear-gradient(180deg, #001a33 0%, #001529 100%);
+
+  --bg: radial-gradient(900px 700px at 24px 24px, rgba(255,255,255,.18), transparent 60%),
+        linear-gradient(180deg, #a9d3ff 0%, #69a6ff 100%);
 }
 
 /* ---------- 2) Base Reset ---------- */
@@ -239,7 +242,7 @@ main .container h1 { margin-bottom: .6em; }
 
 /* Highlights */
 .book.favorite a { color: #e76033; font-weight: 700; }  /* red */
-.book.good a     { color: #11c0af; font-weight: 600; }  /* deep blue */
+.book.good a     { color: #1ab168; font-weight: 600; }  /* deep blue */
 .book.okay a     { color: #1278b8; }                    /* teal-ish */
 
 
@@ -247,3 +250,24 @@ main .container h1 { margin-bottom: .6em; }
 main.container { padding-top: 0.5rem; }           /* or 0 */
 main.container > *:first-child { margin-top: 0; }  /* kill heading’s top margin */
 h1:first-child { margin-top: 0; }                  /* extra safety */
+
+
+html {
+  min-height: 100%;
+  background: var(--bg);
+  /* Make the paint stay put while content scrolls */
+  background-attachment: fixed, fixed;
+}
+
+body {
+  min-height: 100%;
+  background: transparent;   /* don't re-paint another bg */
+}
+
+/* The content wrapper should not paint a background */
+main, .container, .page, .prose, .post {
+  background: transparent !important;
+}
+
+/* Safety: avoid accidental clipping/stripes */
+html, body { overflow-x: hidden; }
