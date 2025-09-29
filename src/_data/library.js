@@ -177,5 +177,36 @@ module.exports = [
   { title: "Network Medicine: Complex Systems in Human Disease", author: "Joseph Loscalzo, Albert-László Barabási & Edwin K. Silverman", year: 2017, asin: "0674971738" },
   { title: "Fossil Future", author: "Alex Epstein", year: 2022, asin: "0593420418" },
   { title: "Invention: A Life", author: "James Dyson", year: 2021, asin: "1982186451" },
-  { title: "Elementary Particles and the Laws of Physics: The 1986 Dirac Memorial Lectures", author: "Richard P. Feynman & Steven Weinberg", year: 1987, asin: "0521658624" }
+  { title: "Elementary Particles and the Laws of Physics: The 1986 Dirac Memorial Lectures", author: "Richard P. Feynman & Steven Weinberg", year: 1987, asin: "0521658624" },
+    // — From Phuket Island's Project F's shelf photos —
+  { title: "How Progress Ends: Technology, Innovation, and the Fate of Nations", author: "Carl Benedikt Frey", year: 2025, asin: "0691233071" },
+  { title: "The Intelligent Investor (Rev. ed.)", author: "Benjamin Graham", year: 2006, asin: "0060555661" },
+  { title: "Security Analysis (6th ed.)", author: "Benjamin Graham & David L. Dodd", year: 2008, asin: "0071592539" },
+  { title: "Influence: The Psychology of Persuasion (New & Expanded)", author: "Robert B. Cialdini", year: 2021, asin: "0062937650" },
+  { title: "Berkshire Hathaway Letters to Shareholders 1965–2014", author: "Warren E. Buffett (ed. Max Olson)", year: 2015, asin: "0991117003" },
+  { title: "The Outsiders: Eight Unconventional CEOs…", author: "William N. Thorndike, Jr.", year: 2012, asin: "1422162672" },
+  { title: "Business Adventures", author: "John Brooks", year: 2014, asin: "1497644895" },
+  { title: "Shoe Dog", author: "Phil Knight", year: 2016, asin: "1501135929" },
+  { title: "The Most Important Thing", author: "Howard Marks", year: 2011, asin: "0231145625" },
+  { title: "The Moment of Lift", author: "Melinda Gates", year: 2019, asin: "1250313570" },
+
+  { title: "Calling Bullshit: The Art of Skepticism in a Data-Driven World", author: "Carl T. Bergstrom & Jevin D. West", year: 2020, asin: "0525509186" },
+  { title: "Something Deeply Hidden", author: "Sean Carroll", year: 2019, asin: "1524743011" },
+  { title: "How We Learn: Why Brains Learn Better Than Any Machine… for Now", author: "Stanislas Dehaene", year: 2020, asin: "0525559886" },
+  { title: "Physics of the Future", author: "Michio Kaku", year: 2011, asin: "0307473333" },
+  { title: "The Order of Time", author: "Carlo Rovelli", year: 2018, asin: "073521610X" },
+  { title: "Seven Brief Lessons on Physics", author: "Carlo Rovelli", year: 2016, asin: "0399184414" },
+  { title: "Reality Is Not What It Seems", author: "Carlo Rovelli", year: 2017, asin: "0735213922" },
+
+  { title: "How to Make an Apple Pie from Scratch", author: "Harry Cliff", year: 2021, asin: "038554565X" },
+  { title: "Ignition!: An Informal History of Liquid Rocket Propellants", author: "John D. Clark", year: 2018, asin: "0817929920" },
+  { title: "Journey Through Genius: The Great Theorems of Mathematics", author: "William Dunham", year: 1990, asin: "014014739X" },
+  { title: "Physics: A Complete Introduction (Teach Yourself)", author: "Jim Breithaupt", year: 2013, asin: "1473679796" },
+
+  { title: "Numbers Don’t Lie: 71 Things You Need to Know About the World", author: "Vaclav Smil", year: 2020, asin: "0143136224" },
+  { title: "How the World Really Works", author: "Vaclav Smil", year: 2022, asin: "0593297067" },
+  { title: "Why We Sleep", author: "Matthew Walker", year: 2017, asin: "1501144316" },
+
+  { title: "The Well-Tempered City", author: "Jonathan F. P. Rose", year: 2016, asin: "006223474X" },
+  { title: "The Short Story of Art", author: "Susie Hodge", year: 2017, asin: "1780679684" }
 ];
