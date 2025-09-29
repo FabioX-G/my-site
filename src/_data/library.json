@@ -1,4 +1,29 @@
 [
-  { "title": "Zero to One", "author": "Peter Thiel", "year": 2014 },
-  { "title": "Hackers & Painters", "author": "Paul Graham", "year": 2004 }
+  {
+    "title": "Build",
+    "author": "Tony Fadell",
+    "year": 2022,
+    "asin": "0063046067",
+    "highlight": "favorite",
+    "notes": "Product stories with real PM scars."
+  },
+  {
+    "title": "No Rules Rules",
+    "author": "Reed Hastings & Erin Meyer",
+    "year": 2020,
+    "asin": "1984877860"
+  },
+  {
+    "title": "Measure What Matters",
+    "author": "John Doerr",
+    "year": 2018,
+    "asin": "0525536221"
+  },
+  {
+    "title": "How Big Things Get Done",
+    "author": "Bent Flyvbjerg & Dan Gardner",
+    "year": 2023,
+    "asin": "0593239512",
+    "highlight": "good"
+  }
 ]
