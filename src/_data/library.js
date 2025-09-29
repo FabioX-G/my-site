@@ -193,7 +193,7 @@ module.exports = [
   { title: "Calling Bullshit: The Art of Skepticism in a Data-Driven World", author: "Carl T. Bergstrom & Jevin D. West", year: 2020, asin: "0525509186" },
   { title: "Something Deeply Hidden", author: "Sean Carroll", year: 2019, asin: "1524743011" },
   { title: "How We Learn: Why Brains Learn Better Than Any Machine… for Now", author: "Stanislas Dehaene", year: 2020, asin: "0525559886" },
-  { title: "Physics of the Future", author: "Michio Kaku", year: 2011, asin: "0307473333" },
+  { title: "Physics of the Future", author: "Michio Kaku", year: 2011, asin: "0307473333",highlight: "favorite" },
   { title: "The Order of Time", author: "Carlo Rovelli", year: 2018, asin: "073521610X" },
   { title: "Seven Brief Lessons on Physics", author: "Carlo Rovelli", year: 2016, asin: "0399184414" },
   { title: "Reality Is Not What It Seems", author: "Carlo Rovelli", year: 2017, asin: "0735213922" },
