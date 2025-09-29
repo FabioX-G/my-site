@@ -208,5 +208,8 @@ module.exports = [
   { title: "Why We Sleep", author: "Matthew Walker", year: 2017, asin: "1501144316" },
 
   { title: "The Well-Tempered City", author: "Jonathan F. P. Rose", year: 2016, asin: "006223474X" },
-  { title: "The Short Story of Art", author: "Susie Hodge", year: 2017, asin: "1780679684" }
+  { title: "The Short Story of Art", author: "Susie Hodge", year: 2017, asin: "1780679684" },
+
+  { title: "Zero to One: Notes on Startups, or How to Build the Future", author: "Peter Thiel with Blake Masters", year: 2014, asin: "0804139296" },
+  { title: "Fundamentals: Ten Keys to Reality", author: "Frank Wilczek", year: 2021, asin: "0735223793" }
 ];
