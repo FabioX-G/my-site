@@ -8,11 +8,11 @@ home: true
 
 This is Fabio. I currently live in Portugal and work at **[Amora Vida](https://www.amora-vida.com/)**.
 
-I grew up in Shanghai, China, and previously studied at Syracuse University. (More [about me](/about/))
+Born in Lisbon 🇵🇹, grew up in Shanghai 🇨🇳, studied at Syracuse University 🇺🇸, lived in Thailand 🇹🇭 for a while… and now I’m back in Portugal. (More [about me](/about/))
 
 I share my [thoughts](/blog/) here from time to time to think and reflect.
 
-In my free time, I enjoy reading nonfiction [books](/library/), training Muay Thai, playing soccer, and spending time with my 10-year-old brother Jason (we play Brawl Stars & FC Mobile, and read comics before bedtime).
+In my free time, I enjoy reading nonfiction [books](/library/), training Muay Thai, playing soccer, vibe-coding this personal website of mine, and spending time with my 10-year-old brother Jason (we play Brawl Stars & FC Mobile, and read comics before bedtime).
 
 
 ## Latest Essays
