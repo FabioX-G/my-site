@@ -32,7 +32,6 @@ module.exports = [
   { title: "Source Code: My Beginnings", author: "Bill Gates", year: 2025, asin: "059380158X" },
   { title: "Prefabrication and the Re-Evolution of Construction", author: "Marty Corrado", year: 2021, asin: "B09B63LFFZ" },
   { title: "Spectacular Flops: Game-Changing Technologies That Failed", author: "Michael Brian Schiffer", year: 2019, asin: "0989824993" },
-  { title: "Build", author: "Tony Fadell", year: 2022, asin: "0063046067"},
   { title: "No Rules Rules", author: "Reed Hastings & Erin Meyer", year: 2020, asin: "1984877860" },
   { title: "Measure What Matters", author: "John Doerr", year: 2018, asin: "0525536221" },
   { title: "How Big Things Get Done", author: "Bent Flyvbjerg & Dan Gardner", year: 2023, asin: "0593239512" },
@@ -149,7 +148,7 @@ module.exports = [
   { title: "Things Hidden Since the Foundation of the World", author: "René Girard", year: 1987, asin: "0804722153" },
   { title: "The Mimetic Brain", author: "Jean-Michel Oughourlian", year: 2016, asin: "1611862177" },
   { title: "The Genesis of Desire", author: "Jean-Michel Oughourlian", year: 2010, asin: "1611862061" },
-
+  { title: "Build", author: "Tony Fadell", year: 2022, asin: "0063046067" },
   { title: "Outlive: The Science & Art of Longevity", author: "Peter Attia with Bill Gifford", year: 2023, asin: "0593236599" },
   { title: "Good Energy", author: "Casey Means with Calley Means", year: 2024, asin: "0593716228" },
   { title: "Why Greatness Cannot Be Planned: The Myth of the Objective", author: "Kenneth O. Stanley & Joel Lehman", year: 2015, asin: "3319155237" },
