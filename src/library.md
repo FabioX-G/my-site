@@ -11,7 +11,7 @@ A living catalog of the physical books on my shelves. I read broadly and often j
 
 - 🌟 My personal favorites are in highlighted 'orange' color. These books drastically changed the way I look at the world.
 - 🟢 Books highlighted in 'green' color are strong recommendations that I think are really worth (re-)reading. 
-- 🔵 Everything else I find super interesting are in the 'blue'.
+- 🔵 Everything else I find super interesting are in 'blue'.
 
 Links go to Amazon; the year is the edition I own.
 
@@ -26,13 +26,14 @@ Links go to Amazon; the year is the edition I own.
   {% endif %}
 
   <li class="book{% if b.highlight %} {{ b.highlight }}{% endif %}">
-    <strong>
-      {% if amz %}<a href="{{ amz }}" target="_blank" rel="noopener noreferrer">{{ b.title }}</a>
-      {% else %}{{ b.title }}{% endif %}
-    </strong>
-    — {{ b.author }}{% if b.year %}（{{ b.year }}）{% endif %}
-    {% if b.highlight == "favorite" %} <span aria-label="favorite" title="Personal Favorite">🌟</span>{% endif %}
-    {% if b.notes %}<br><small>{{ b.notes }}</small>{% endif %}
+  {% if amz %}
+    <strong><a href="{{ amz }}" target="_blank" rel="noopener noreferrer">{{ b.title }}</a></strong>
+  {% else %}
+    <strong>{{ b.title }}</strong>
+  {% endif %}
+  — {{ b.author }}{% if b.year %} ({{ b.year }}){% endif %}
+  {% if b.highlight == "favorite" %} <span aria-label="favorite" title="Personal Favorite">🌟</span>{% endif %}
+  {% if b.notes %}<br><small>{{ b.notes }}</small>{% endif %}
   </li>
 {% endfor %}
 </ul>
