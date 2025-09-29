@@ -115,7 +115,7 @@ module.exports = [
   { title: "Gene Machine", author: "Venki Ramakrishnan", year: 2018, asin: "0465093363" },
   { title: "The Character of Physical Law", author: "Richard P. Feynman", year: 1965, asin: "0262533416" },
   { title: "Too Big for a Single Mind", author: "Tobias Hürter", year: 2023, asin: "1615199209" },
-  { title: "Alex’s Adventures in Numberland", author: "Alex Bellos", year: 2010, asin: "1416588253" }, // US: "Here's Looking at Euclid"
+  { title: "Alex’s Adventures in Numberland", author: "Alex Bellos", year: 2010, asin: "1526623994" }, // US: "Here's Looking at Euclid"
   { title: "Superintelligence", author: "Nick Bostrom", year: 2014, asin: "0198739834" },
   { title: "Totally Random", author: "Jeffrey Bub & Tanya Bub", year: 2018, asin: "0691183565" },
   { title: "The Discrete Charm of the Machine", author: "Ken Steiglitz", year: 2019, asin: "069119054X" },
