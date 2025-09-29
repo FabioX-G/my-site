@@ -38,7 +38,7 @@ module.exports = [
   { title: "Why Nations Fail", author: "Daron Acemoglu & James A. Robinson", year: 2012, asin: "0307719227" },
   { title: "Never Split the Difference", author: "Chris Voss", year: 2016, asin: "0062407805" },
   { title: "Introduction to Classical Mechanics", author: "David Morin", year: 2008, asin: "0521876222" },
-  { title: "The Beginning of Infinity", author: "David Deutsch", year: 2011, asin: "0143121359" },
+  { title: "The Beginning of Infinity", author: "David Deutsch", year: 2011, asin: "0143121359",highlight: "good" },
   { title: "Materials and Dematerialization", author: "Vaclav Smil", year: 2013, asin: "1119942535" },
   { title: "What Is Life?", author: "Paul Nurse", year: 2020, asin: "0393541152" },
   { title: "The Next 500 Years", author: "Christopher E. Mason", year: 2021, asin: "0262044392" },
