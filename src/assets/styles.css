@@ -1,121 +1,125 @@
 /* =========================================================
-   Fabio Xie — Sleek Cyberpunk • Clean + Responsive + Performant
+   Fabio Xie — Ocean Cyberpunk (clean + calm)
    ========================================================= */
 
-/* ---------- Design Tokens ---------- */
+/* ---------- 1) Design Tokens ---------- */
 :root{
+  /* Typography / layout */
   --fg: #0b0e12;
-  --panel: rgba(8,12,24,.18);
-  --radius: 18px;
-  --shadow: 0 12px 42px rgba(0,0,0,.18);
   --content-max: clamp(820px,72vw,1200px);
 
   /* Accents */
   --acc-cyan: #00e5ff;
   --acc-blue: #2b74ff;
 
-  /* Sidebar alignment */
+  /* Sidebar */
   --side-pad: 16px;
   --nav-indent: 42px;
   --text-left: calc(var(--side-pad) + var(--nav-indent));
-
   --icon-size: 18px;
   --ball-size: 28px;
   --ball-top: 18px;
   --ball-left: 16px;
 
-  /* Colors used by background */
-  --bg-c1: #e6f2ff;         /* light */
-  --bg-c2: #4da6ff;         /* mid */
-  --bg-c3: #1a2a4a;         /* softened deep (no harsh black band) */
-
   --sidebar-bg: linear-gradient(180deg, #001a33 0%, #001529 100%);
 }
 
-/* ---------- Base Reset ---------- */
+/* ---------- 2) Base Reset ---------- */
 *{ box-sizing: border-box; }
 html, body{ margin: 0; padding: 0; overflow-x: clip; }
 body{
   color: var(--fg);
   font: 16px/1.65 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
         "SF Pro SC","PingFang SC","Hiragino Sans GB","Noto Sans CJK SC", sans-serif;
-  background: transparent;   /* 背景画在 html 上 */
+  background: transparent; /* 背景画在 html 上，保证统一 */
 }
 
-/* ---------- Background (HTML owns it) ---------- */
-/* 两个光斑 + 一条线性过渡；底部不再压黑 */
+/* ---------- 3) Global Background (one unified canvas) ---------- */
+/* 主背景：从浅蓝到海蓝，左右缓慢流动；背景始终统一，不随内容高度而断层 */
 html{
   min-height: 100%;
-  background:
-    radial-gradient(1400px 560px at 12% 18%, rgba(173,216,255,.45), transparent 55%),
-    radial-gradient(1100px 520px at 88% 78%, rgba(0,188,212,.22), transparent 62%),
-    linear-gradient(122deg, var(--bg-c1) 0%, var(--bg-c2) 100%);
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-color: var(--bg-c1);
+  background: linear-gradient(135deg, #e6f2ff, #4da6ff, #1f4b8e);
+  background-size: 380% 380%;                /* 放大以获得平滑位移 */
+  animation: oceanFlow 48s ease-in-out infinite;
+  background-attachment: scroll;              /* 跟随页面，但统一在 html 层 */
 }
 
-/* 可选：若想要科幻噪声层，把下面注释解开即可（已调成底部渐隐与低不透明度） */
-/*
-html::before,
+/* 水波纹（极淡） */
+html::before{
+  content:"";
+  position: fixed; inset: -8% -8%;
+  pointer-events: none; z-index: -1;
+  background:
+    radial-gradient(40% 28% at 12% 18%, rgba(255,255,255,.06), transparent 60%),
+    radial-gradient(55% 36% at 88% 78%, rgba(0,160,255,.08), transparent 62%),
+    radial-gradient(45% 32% at 68% 22%, rgba(0,229,255,.055), transparent 68%);
+  filter: blur(.5px);
+  transform: translate3d(0,0,0);
+  animation: oceanDrift 52s ease-in-out infinite;
+}
+
+/* 细扫描线（超低不透明度；底部 95% 起渐隐 -> 不会出黑带） */
 html::after{
   content:"";
-  position: fixed;
-  inset: -10% -10%;
-  pointer-events: none;
-  z-index: -1;
+  position: fixed; inset: -6% -6%;
+  pointer-events: none; z-index: -1;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,.018) 0 1px,
+    transparent 1px 3px
+  );
+  opacity: .14;
+  animation: scanShift 22s linear infinite;
+  -webkit-mask-image: linear-gradient(to bottom,#000 0%,#000 95%,transparent 100%);
+          mask-image: linear-gradient(to bottom,#000 0%,#000 95%,transparent 100%);
 }
-html::before{
-  background:
-    radial-gradient(700px 380px at 10% 12%, rgba(0,229,255,.25), transparent 60%),
-    radial-gradient(520px 300px at 90% 84%, rgba(43,116,255,.18), transparent 65%),
-    radial-gradient(380px 260px at 68% 22%, rgba(255,255,255,.08), transparent 70%);
-  filter: blur(.2px);
-  animation: bgDrift 38s ease-in-out infinite;
+
+/* 背景动画关键帧（宁静、缓慢） */
+@keyframes oceanFlow{
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
 }
-html::after{
-  background:
-    repeating-radial-gradient(circle at 20% 30%, rgba(255,255,255,.018) 0 2px, transparent 2px 6px),
-    repeating-linear-gradient(to bottom, rgba(255,255,255,.020) 0 1px, transparent 1px 3px);
-  opacity: .22;
-  animation: noiseShift 11s linear infinite;
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 78%, transparent 96%, transparent 100%);
-          mask-image: linear-gradient(to bottom, #000 0%, #000 78%, transparent 96%, transparent 100%);
+@keyframes oceanDrift{
+  0%   { transform: translate3d(0%, 0%, 0)     scale(1); }
+  50%  { transform: translate3d(2.2%, -1.6%,0) scale(1.02) rotate(.2deg); }
+  100% { transform: translate3d(0%, 0%, 0)     scale(1); }
 }
+@keyframes scanShift{ 0%{ background-position:0 0 } 100%{ background-position:0 220px } }
+
 @media (prefers-reduced-motion: reduce){
+  html{ animation: none; }
   html::before, html::after{ animation: none; }
 }
-@keyframes bgDrift{ 0%,100%{ transform: none } 50%{ transform: translate3d(2.2%,-1.8%,0) } }
-@keyframes noiseShift{ 0%{ background-position:0 0,0 0 } 100%{ background-position:0 120px,0 220px } }
-*/
 
-/* ---------- Page Layout (sticky footer baseline) ---------- */
+/* ---------- 4) Page Layout ---------- */
+/* 统一使用“粘底页脚”：内容少时 footer 贴底；背景在 html，所以不会出现深色条 */
 html, body { height: 100%; }
 body { display: flex; min-height: 100vh; flex-direction: column; }
-main.site-main { flex: 1; }  /* 主体填充 */
+main.site-main { flex: 1; }
 
-/* 首页不拉伸；footer 紧跟内容 */
+/* 首页可选：不拉伸（如果想把 footer 紧跟内容，给 index.md 加 home:true） */
 body.home main.site-main { flex: 0; min-height: auto; }
 
-/* ---------- Containers ---------- */
+/* ---------- 5) Containers ---------- */
 .container{
   width: 100%;
   max-width: var(--content-max);
   margin: 14px auto;
   padding: 28px;
   background: transparent;
-  border: 0; border-radius: 0; box-shadow: none;
   animation: fx-fade-up .5s ease-out both; animation-delay: .06s;
   will-change: opacity, transform;
 }
 
-/* ---------- Footer (centered + transparent) ---------- */
+/* ---------- 6) Footer（透明 + 居中 + 无底色） ---------- */
 .site-footer{
   margin-top: auto;           /* 粘底 */
   padding: 0;
   font-size: 14px;
   color: rgba(255,255,255,.85);
   text-shadow: 0 1px 2px rgba(0,0,0,.25);
+  background: transparent !important;
 }
 .site-footer, .container--footer{
   display: flex; justify-content: center; align-items: center; text-align: center;
@@ -128,7 +132,7 @@ body.home main.site-main { flex: 0; min-height: auto; }
   background: transparent !important; border: 0 !important; box-shadow: none !important;
 }
 
-/* ---------- Floating Launcher + Sidebar ---------- */
+/* ---------- 7) Floating Launcher + Sidebar ---------- */
 .nav-launcher{ position: fixed; inset: 0 auto auto 0; z-index: 2000; pointer-events: none; }
 .nav-launcher > *{ pointer-events: auto; }
 
@@ -183,15 +187,7 @@ body.home main.site-main { flex: 0; min-height: auto; }
 }
 .nav-link:hover::before{ background-color: var(--acc-cyan); box-shadow: 0 0 10px rgba(0,229,255,.45), 0 0 18px rgba(122,92,255,.25); transform: translateX(2px); }
 
-/* Inline SVG icons via CSS variables */
-.nav-about{ --icon:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="white"><circle cx="12" cy="8" r="3"/><path d="M4 20a8 8 0 0 1 16 0H4Z"/></g></svg>'); }
-.nav-blog { --icon:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="white"><rect x="4" y="4" width="14" height="16" rx="2" ry="2"/><path d="M18 8l2 2-6 6h-2v-2l6-6Z"/></g></svg>'); }
-.nav-books{ --icon:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g fill="white"><path d="M6 4h10a2 2 0 0 1 2 2v14H8a2 2 0 0 1-2-2V4Z"/><rect x="6" y="18" width="12" height="2"/></g></svg>'); }
-
-.sidebar-content{ height: calc(100dvh - 56px); overflow-y: auto; padding-right: 8px; scrollbar-width: thin; }
-.sidebar-footer{ position: sticky; bottom: 0; padding: 12px 0 10px; font-size: 12px; color: rgba(236,244,255,.65); background: transparent; }
-
-/* ---------- Accessibility ---------- */
+/* ---------- 8) Accessibility ---------- */
 .skip-link{
   position: fixed; left: -9999px; top: 12px; z-index: 3000;
   padding: 8px 12px; border-radius: 10px; background: rgba(255,255,255,.95); color: #0b0e12;
@@ -199,89 +195,26 @@ body.home main.site-main { flex: 0; min-height: auto; }
 }
 .skip-link:focus-visible{ left: 12px; }
 
-/* ---------- Reading Mode ---------- */
+/* ---------- 9) Reading Mode ---------- */
 body.reading{ background: #0a0f2c; color: #f1f5f9; }
 body.reading .container{
   max-width: 68ch; padding: 32px; background: rgba(255,255,255,.04);
   border: 1px solid rgba(255,255,255,.08); box-shadow: 0 8px 30px rgba(0,0,0,.6);
 }
 
-/* ---------- Lists / Blog ---------- */
+/* ---------- 10) Lists / Blog ---------- */
 .blog-list{ margin: 0 0 2rem 1.25rem; padding: 0; }
 .blog-list li{ margin: .5rem 0; }
 
-/* 首页 CTA：保证无底色 */
+/* 首页 CTA：确保无底色条 */
 .home-cta{ margin: 8px 0 0; }
 .home-cta a{ background: transparent !important; text-decoration: underline; padding: 0; }
 
-/* ---------- Animations ---------- */
+/* ---------- 11) Micro animations ---------- */
 @keyframes fx-fade-up{ from{ opacity:0; transform: translate3d(0,8px,0) } to{ opacity:1; transform:none } }
 
-/* ---------- Responsive ---------- */
+/* ---------- 12) Responsive ---------- */
 @media (max-width: 880px){
   .sidebar{ width: 82vw; }
   .container{ margin: 84px 12px 24px; max-width: none; }
-}
-
-/* ========== Subtle Cyberpunk Ocean “wave + scanline” ========== */
-/* 说明：
-   - ::before => 柔和“水波/海光”纹理（very low opacity）
-   - ::after  => 细腻扫描线（几乎不可见），底部渐隐，避免黑带
-   - 都是 fixed + pointer-events:none，不参与布局
-*/
-
-/* 柔和海波：大尺度光斑叠加，缓慢漂移 */
-html::before{
-  content:"";
-  position: fixed;
-  inset: -8% -8%;
-  z-index: -1;
-  pointer-events: none;
-
-  /* 两组大尺度“水波/海光” */
-  background:
-    radial-gradient(40% 28% at 12% 18%, rgba(255,255,255,.06), transparent 60%),
-    radial-gradient(55% 36% at 88% 78%, rgba(0,160,255,.08), transparent 62%),
-    radial-gradient(45% 32% at 68% 22%, rgba(0,229,255,.055), transparent 68%);
-  filter: blur(.5px);
-  transform: translate3d(0,0,0);
-  animation: oceanDrift 52s ease-in-out infinite;
-}
-
-/* 极淡扫描线：增加“电子质感”，底部做渐隐遮罩 */
-html::after{
-  content:"";
-  position: fixed;
-  inset: -6% -6%;
-  z-index: -1;
-  pointer-events: none;
-
-  background:
-    repeating-linear-gradient(
-      to bottom,
-      rgba(255,255,255,.018) 0 1px,
-      transparent 1px 3px
-    );
-  opacity: .16;
-  animation: scanShift 18s linear infinite;
-
-  /* 底部 94% 后渐隐，避免黑带 */
-  -webkit-mask-image: linear-gradient(to bottom,#000 0%,#000 94%,transparent 100%);
-          mask-image: linear-gradient(to bottom,#000 0%,#000 94%,transparent 100%);
-}
-
-/* 动画关键帧：非常缓慢，宁静感 */
-@keyframes oceanDrift{
-  0%   { transform: translate3d(0%, 0%, 0)     scale(1); }
-  50%  { transform: translate3d(2.4%, -1.8%,0) scale(1.02) rotate(.2deg); }
-  100% { transform: translate3d(0%, 0%, 0)     scale(1); }
-}
-@keyframes scanShift{
-  0%   { background-position: 0 0; }
-  100% { background-position: 0 220px; }
-}
-
-/* 减少动画时自动静止 */
-@media (prefers-reduced-motion: reduce){
-  html::before, html::after{ animation: none !important; }
 }
