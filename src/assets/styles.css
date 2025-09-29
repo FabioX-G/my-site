@@ -218,3 +218,16 @@ body.reading .container{
   .sidebar{ width: 82vw; }
   .container{ margin: 84px 12px 24px; max-width: none; }
 }
+
+/* 顶部更紧凑：把容器上内边距收小 */
+main .container { padding-top: 16px; }
+
+/* 容器里的第一个元素不要自带上边距（通常是 H1） */
+main .container > :first-child { margin-top: 0; }
+
+/* 再保险：如果第一个就是标题，也清零 */
+main .container h1:first-child,
+main .container h2:first-child { margin-top: 0; }
+
+/* 标题与正文的间距微调（更好看） */
+main .container h1 { margin-bottom: .6em; }
