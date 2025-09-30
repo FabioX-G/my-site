@@ -5,7 +5,7 @@ layout: layouts/base.njk
 
 # Quotes
 
-A collection of my favorite quotes & insights.
+A collection of my favorite one-liner quotes.
 
 > "If you're thinking without writing, you're only thinking that you're thinking," - Leslie Lamport
 
@@ -20,6 +20,9 @@ A collection of my favorite quotes & insights.
 > "Everyone faces the future with their eyes firmly on the past. And they don't see what's going to happen next." - John Robinson Pierce
 
 > “A company becomes the people it hires, not the plan it makes.” - Vinod Khosla
+
+# Insights
+A collection of my favorite long-form insights.
 
 > "Most people think that competition is a synonym to business. But I argue that it is actually an antonym. Profits are just competed away in these competitions. If you want to start a business, you should start one that has a high pricing ability in a specific field (which is a monopoly). " - Peter Thiel
 
