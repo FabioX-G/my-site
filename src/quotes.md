@@ -11,6 +11,8 @@ A collection of my favorite one-liner quotes.
 
 > “The best way to predict the future is to invent it.” — Alan Kay  
 
+> "When in doubt, follow your curiosity. It never lies, and it knows more than you do about what's worth paying attention to." - Paul Graham
+
 > "If you want to have good ideas you must have many ideas." - Linus Pauling
 
 > "Earthquakes do not kill people; collapsing buildings do." - Ilan Kelman
