@@ -28,5 +28,6 @@ In my free time, I enjoy reading nonfiction [books](/library/), training [Muay T
   · <a href="/blog/">See all essays →</a> 
   · <a href="/library/">My bookshelf →</a>
   · <a href="/quotes/">Quotes →</a>
-  · My [YouTube](https://www.youtube.com/@fabio_xie)
 </p>
+
+Here is my [YouTube](https://www.youtube.com/@fabio_xie) channel.
