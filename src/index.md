@@ -25,8 +25,8 @@ In my free time, I enjoy reading nonfiction [books](/library/), training [Muay T
 
 
 <p class="home-cta">
-  · <a href="/blog/">See all essays →</a> 
-  · <a href="/library/">My bookshelf →</a>
+  · <a href="/essay/">See all essays →</a> 
+  · <a href="/bookshelf/">My bookshelf →</a>
   · <a href="/quotes/">Quotes →</a>
 </p>
 
