@@ -13,7 +13,7 @@ For a long time, school tricked me into thinking reading was a chore. I've since
 
 > follow your own curiosity relentlessly.
 
-This digital bookshelf is the result of that philosophy. It is a living catalog of (most of) my physical books, guided by whatever subject interests me most at any given moment.
+This digital bookshelf is the result of that philosophy. It is a living catalog of (most of) the physical books that I own, guided by whatever subject interests me most at any given moment.
 
 To help you navigate, I've color-coded my recommendations:
 
