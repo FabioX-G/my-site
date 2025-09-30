@@ -8,7 +8,7 @@ Every essay here is an attempt to figure something out for myself.
 
 <h1>Essays</h1>
 <ul>
-{% for post in collections.essay %}
+{% for post in collections.essay | reverse %}
   {% if not post.data.draft %}
     <li>
       <a href="{{ post.url }}">{{ post.data.title }}</a>
