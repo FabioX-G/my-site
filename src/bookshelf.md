@@ -1,7 +1,7 @@
 ---
 layout: layouts/base.njk
 title: Bookshelf
-permalink: /library/index.html
+permalink: /bookshelf/index.html
 bodyClass: page--tight-top
 ---
 

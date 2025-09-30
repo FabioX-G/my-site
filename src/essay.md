@@ -1,9 +1,9 @@
 ---
 layout: layouts/base.njk
-title: Blog
+title: Essay
 ---
 
-<h1>Blog</h1>
+<h1>Essay</h1>
 <ul>
 {% for post in collections.essay %}
   {% if not post.data.draft %}
