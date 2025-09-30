@@ -27,7 +27,7 @@ title: About Me 关于我
     - Grade 6 - 7: 上海世界外国语中学(双语部) World Foreign Language Middle Sschool (WFLMS), 
     - Grade 8 - 9: 上海中学(国际部) Shanghai High School Internatinal Division (SHSID), and 
     - Grade 10 - 12: 上海美国学校(浦西) Shanghai American School (SAS - Puxi Campus). 
-    - My favorite part of high school was starting the **[Shanghai High-School Soccer Association (SHSA) League](/soccer/)**, which brought together students from different high schools across the city to play and compete.
+    - My favorite part of high school was starting the **[Shanghai High-School Soccer Association (SHSA) League](/posts/soccer/)**, which brought together students from different high schools across the city to play and compete.
 
 - **2000**: Born in Lisbon, Portugal 🇵🇹 (and finished kindergarten there.)
 
