@@ -2,6 +2,9 @@
 layout: layouts/base.njk
 title: Essays
 ---
+“An essay is something you write to figure something out.” - [Paul Graham](https://www.paulgraham.com/field.html)
+
+Every essay here is an attempt to figure something out for myself.
 
 <h1>Essays</h1>
 <ul>
