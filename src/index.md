@@ -35,4 +35,8 @@ In my free time, I enjoy reading nonfiction <a href="/bookshelf/">books</a>, tra
   · <a href="/quotes/">Quotes →</a>
 </p>
 
-Here is my [YouTube](https://www.youtube.com/@fabio_xie) channel.
+<div class="contact-links" aria-label="Ways to reach me">
+  <a class="contact-chip" href="mailto:fabio@amora-vida.com">Email</a>
+  <a class="contact-chip" href="https://www.youtube.com/@fabio_xie" target="_blank" rel="noopener noreferrer">YouTube</a>
+  <a class="contact-chip" href="https://www.linkedin.com/in/fabio-xie" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+</div>

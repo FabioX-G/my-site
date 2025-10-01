@@ -20,38 +20,30 @@
   {# 无障碍：键盘直达主内容 #}
   <a class="skip-link" href="#main-content">跳到主内容</a>
 
-  {# ───────── 固定的启动器 + 侧栏（不参与页面竖向布局高度）───────── #}
-  <div class="nav-launcher" aria-label="主导航">
-    <!-- 悬浮启动按钮（小球） -->
-    <button class="nav-fab" aria-controls="sidebar" aria-expanded="false" aria-label="打开主导航">
-      <span class="dot" aria-hidden="true"></span>
-    </button>
-
-    <!-- 侧栏（固定于左侧，内部可滚动） -->
-    <aside id="sidebar" class="sidebar" role="navigation" aria-label="站点导航">
-      <div class="sidebar-content">
-        <header class="sidebar-header">
-          <a href="/" class="brand">Fabio Xie</a>
-        </header>
-
-        <nav class="nav" aria-label="主菜单">
-          <a class="nav-link nav-home{% if page.url == '/' %} is-active{% endif %}" href="/">Overview</a>
-          <a class="nav-link nav-about{% if page.url == '/about/' %} is-active{% endif %}" href="/about/">About Me</a>
-          <a class="nav-link nav-essay{% if page.url == '/essay/' %} is-active{% endif %}" href="/essay/">Essays</a>
-          <a class="nav-link nav-books{% if page.url == '/bookshelf/' %} is-active{% endif %}" href="/bookshelf/">Bookshelf</a>
-          <a class="nav-link nav-quotes{% if page.url == '/quotes/' %} is-active{% endif %}" href="/quotes/">Quotes</a>
+  {% if not reading %}
+    <header class="site-nav" role="banner">
+      <div class="nav-shell">
+        <a class="nav-logo" href="/">Fabio Xie</a>
+        <nav class="nav-primary" aria-label="主菜单">
+          <a class="nav-pill{% if page.url == '/' %} is-active{% endif %}" href="/">Overview</a>
+          <a class="nav-pill{% if page.url == '/about/' %} is-active{% endif %}" href="/about/">About</a>
+          <a class="nav-pill{% if page.url == '/essay/' %} is-active{% endif %}" href="/essay/">Essays</a>
+          <a class="nav-pill{% if page.url == '/bookshelf/' %} is-active{% endif %}" href="/bookshelf/">Bookshelf</a>
+          <a class="nav-pill{% if page.url == '/quotes/' %} is-active{% endif %}" href="/quotes/">Quotes</a>
         </nav>
-
-        <div class="nav-meta" aria-label="Fast actions">
-          <a class="nav-mini" href="mailto:fabio@amora-vida.com">Email</a>
-          <a class="nav-mini" href="https://www.youtube.com/@fabio_xie" target="_blank" rel="noopener noreferrer">YouTube</a>
-          <a class="nav-mini" href="https://www.linkedin.com/in/fabio-xie" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        </div>
       </div>
-
-
-    </aside>
-  </div>
+    </header>
+  {% else %}
+    <nav class="essay-nav" aria-label="Essay navigation">
+      <a href="/essay/" class="essay-nav__back">← Essays</a>
+      {% if page.previous %}
+        <a class="essay-nav__link essay-nav__prev" href="{{ page.previous.url }}">← {{ page.previous.data.title }}</a>
+      {% endif %}
+      {% if page.next %}
+        <a class="essay-nav__link essay-nav__next" href="{{ page.next.url }}">{{ page.next.data.title }} →</a>
+      {% endif %}
+    </nav>
+  {% endif %}
 
   {# ───────── 主内容区域（唯一的主容器）───────── #}
   <main  id="main-content" class="site-main" role="main" tabindex="-1">
@@ -67,51 +59,5 @@
     </div>
   </footer>
 
-  {# ───────── 交互脚本：hover 展开 / click 切换 / Esc & 点击外部关闭 ───────── #}
-  <script>
-  (() => {
-    const root = document.querySelector('.nav-launcher');
-    if (!root) return;
-
-    const fab = root.querySelector('.nav-fab');
-    const sidebar = root.querySelector('.sidebar');
-
-    let hideTimer = null;
-    const open = () => {
-      clearTimeout(hideTimer);
-      root.classList.add('is-open');
-      fab.setAttribute('aria-expanded', 'true');
-    };
-    const close = () => {
-      clearTimeout(hideTimer);
-      root.classList.remove('is-open');
-      fab.setAttribute('aria-expanded', 'false');
-    };
-    const scheduleClose = (delay = 160) => {
-      clearTimeout(hideTimer);
-      hideTimer = setTimeout(close, delay);
-    };
-
-    // 桌面：悬停打开，移出 launcher 区域延时收起
-    fab.addEventListener('mouseenter', open);
-    sidebar.addEventListener('mouseenter', open);
-    root.addEventListener('mouseleave', () => scheduleClose(160));
-
-    // 点击小球切换（移动端/无悬停）
-    fab.addEventListener('click', (e) => {
-      e.preventDefault();
-      root.classList.contains('is-open') ? close() : open();
-    });
-
-    // Esc 关闭
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
-
-    // 点击外部关闭
-    document.addEventListener('click', (e) => {
-      if (!root.classList.contains('is-open')) return;
-      if (!e.target.closest('.nav-launcher')) close();
-    });
-  })();
-  </script>
 </body>
 </html>
