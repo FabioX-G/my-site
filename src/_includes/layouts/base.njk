@@ -35,11 +35,18 @@
         </header>
 
         <nav class="nav" aria-label="主菜单">
+          <a class="nav-link nav-home{% if page.url == '/' %} is-active{% endif %}" href="/">Overview</a>
           <a class="nav-link nav-about{% if page.url == '/about/' %} is-active{% endif %}" href="/about/">About Me</a>
           <a class="nav-link nav-essay{% if page.url == '/essay/' %} is-active{% endif %}" href="/essay/">Essays</a>
           <a class="nav-link nav-books{% if page.url == '/bookshelf/' %} is-active{% endif %}" href="/bookshelf/">Bookshelf</a>
           <a class="nav-link nav-quotes{% if page.url == '/quotes/' %} is-active{% endif %}" href="/quotes/">Quotes</a>
         </nav>
+
+        <div class="nav-meta" aria-label="Fast actions">
+          <a class="nav-mini" href="mailto:fabio@amora-vida.com">Email</a>
+          <a class="nav-mini" href="https://www.youtube.com/@fabio_xie" target="_blank" rel="noopener noreferrer">YouTube</a>
+          <a class="nav-mini" href="https://www.linkedin.com/in/fabio-xie" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
       </div>
 
 
@@ -47,7 +54,7 @@
   </div>
 
   {# ───────── 主内容区域（唯一的主容器）───────── #}
-  <main  class="site-main" role="main" tabindex="-1">
+  <main  id="main-content" class="site-main" role="main" tabindex="-1">
     <div class="container {{ bodyClass | default('') }} ">
       {{ content | safe }}
     </div>

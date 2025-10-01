@@ -9,7 +9,7 @@ title: About Me 关于我
 
 - **2019–2024**: Studied at Syracuse University 🇺🇸  
     - Majored in *Environment, Sustainability, and Policy* and *Entrepreneurship and Emerging Enterprises*.
-    - After junior year, I moved to Thailand 🇹🇭 with my family and spent more than a year there, before going back to finish my bachelor's degree. 
+    - After junior year, I moved to Thailand 🇹🇭 with my family and spent a year there, before going back to finish my bachelor's degree. 
     - The core business requirements (management/accounting/finance/supply chain/marketing) weren’t very exciting. What I did enjoy were the electives I could choose freely:
         - PHY 314 Quantum Computing Demystified
         - GEO 430 Energy, History, and Society

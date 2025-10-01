@@ -6,13 +6,18 @@ home: true
 
 # Welcome to my site!
 
-This is Fabio.
+<div class="hero-intro">
+  <div class="hero-avatar">
+    <img src="/assets/fabio-photo.png" alt="Portrait of Fabio Xie" decoding="async" loading="lazy" />
+  </div>
+  <div class="hero-copy">
+    <p>This is Fabio.</p>
+    <p>Born in Lisbon 🇵🇹, grew up in Shanghai 🇨🇳, studied at Syracuse University 🇺🇸, lived in Thailand 🇹🇭 for a while, and now I’m back in Portugal to work at <strong><a href="https://www.amora-vida.com/">Amora Vida</a></strong>. (More <a href="/about/">about me</a>)</p>
+    <p>I share my <a href="/essay/">essays</a> here from time to time to think and reflect.</p>
+  </div>
+</div>
 
-Born in Lisbon 🇵🇹, grew up in Shanghai 🇨🇳, studied at Syracuse University 🇺🇸, lived in Thailand 🇹🇭 for a while… and now I’m back in Portugal to work at **[Amora Vida](https://www.amora-vida.com/)**. (More [about me](/about/))
-
-I share my [thoughts](/blog/) here from time to time to think and reflect.
-
-In my free time, I enjoy reading nonfiction [books](/library/), training [Muay Thai](https://youtu.be/b-5bljm8tSk), playing soccer, [interviewing](https://youtu.be/034gmmUK8vc) friends, vibe-coding this personal website of mine, and spending time with my 10-year-old brother [Jason](https://youtu.be/dF_8LnEW9QU?si=Wl7bBf9lCH_KhuzK) (we play Brawl Stars & FC Mobile, brainstorm about his new novels, and read comic books before bedtime).
+In my free time, I enjoy reading nonfiction <a href="/bookshelf/">books</a>, training <a href="https://youtu.be/b-5bljm8tSk">Muay Thai</a>, playing soccer, <a href="https://youtu.be/034gmmUK8vc">interviewing</a> friends, vibe-coding this personal website of mine, and spending time with my 10-year-old brother <a href="https://youtu.be/dF_8LnEW9QU?si=Wl7bBf9lCH_KhuzK">Jason</a> (we play Brawl Stars & FC Mobile, brainstorm about his new novels, and read comic books before bedtime).
 
 
 ## Latest Essays
