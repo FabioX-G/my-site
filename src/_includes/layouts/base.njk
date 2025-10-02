@@ -35,13 +35,15 @@
     </header>
   {% else %}
     <nav class="essay-nav" aria-label="Essay navigation">
-      <a href="/essay/" class="essay-nav__back">← Essays</a>
-      {% if page.previous %}
-        <a class="essay-nav__link essay-nav__prev" href="{{ page.previous.url }}">← {{ page.previous.data.title }}</a>
-      {% endif %}
-      {% if page.next %}
-        <a class="essay-nav__link essay-nav__next" href="{{ page.next.url }}">{{ page.next.data.title }} →</a>
-      {% endif %}
+      <a href="/essay/" class="essay-nav__back" title="Back to Essays">↺ Essays</a>
+      <div class="essay-nav__links">
+        {% if page.previous %}
+          <a class="essay-nav__link essay-nav__prev" href="{{ page.previous.url }}" title="Previous essay">← {{ page.previous.data.title }}</a>
+        {% endif %}
+        {% if page.next %}
+          <a class="essay-nav__link essay-nav__next" href="{{ page.next.url }}" title="Next essay">{{ page.next.data.title }} →</a>
+        {% endif %}
+      </div>
     </nav>
   {% endif %}
 

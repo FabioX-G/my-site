@@ -120,36 +120,35 @@ body::before{
 /* ---------- 4) Page Layout ---------- */
 html, body { height: 100%; }
 body { display: flex; min-height: 100vh; flex-direction: column; }
-main.site-main { flex: 1; padding-top: clamp(78px, 10vw, 104px); }
-body.reading main.site-main { padding-top: clamp(28px, 9vw, 46px); }
+main.site-main { flex: 1; padding-top: clamp(12px, 2.8vw, 20px); }
+body.reading main.site-main { padding-top: clamp(6px, 2vw, 14px); }
 
 /* 首页可选：不拉伸（如果想把 footer 紧跟内容，给 index.md 加 home:true） */
 body.home main.site-main { flex: 0; min-height: auto; }
 
 /* ---------- 5) Site Navigation ---------- */
 .site-nav{
-  position: fixed;
-  inset: clamp(12px, 3vw, 20px) clamp(16px, 4vw, 32px) auto clamp(16px, 4vw, 32px);
+  position: sticky;
+  top: 0;
   z-index: 2000;
   display: flex;
   justify-content: center;
+  width: 100%;
+  background: rgba(10,18,38,.92);
+  border-bottom: 1px solid rgba(56,230,255,.18);
+  backdrop-filter: blur(14px) saturate(140%);
 }
 .nav-shell{
-  width: min(1020px, 100%);
+  width: min(1080px, 100%);
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
-  gap: clamp(10px, 3vw, 22px);
-  padding: clamp(10px, 1.8vw, 14px) clamp(16px, 2.4vw, 24px);
-  border-radius: 16px;
-  background: rgba(12,18,40,.86);
-  border: 1px solid rgba(84,118,200,.32);
-  backdrop-filter: blur(18px) saturate(150%);
-  box-shadow: 0 30px 64px rgba(2,6,18,.55);
+  gap: clamp(8px, 2vw, 20px);
+  padding: clamp(10px, 2vw, 16px) clamp(18px, 3vw, 28px);
 }
 .nav-logo{
   font-weight: 700;
-  font-size: clamp(1rem, 2vw, 1.1rem);
+  font-size: clamp(0.94rem, 1.8vw, 1.05rem);
   letter-spacing: .08em;
   text-transform: uppercase;
   color: #e8f0ff;
@@ -159,7 +158,11 @@ body.home main.site-main { flex: 0; min-height: auto; }
   display: flex;
   justify-content: flex-end;
   gap: clamp(8px, 2.2vw, 18px);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
+.nav-primary::-webkit-scrollbar{ display: none; }
 .nav-pill{
   position: relative;
   padding: 6px 14px;
@@ -167,23 +170,22 @@ body.home main.site-main { flex: 0; min-height: auto; }
   text-decoration: none;
   font-size: 0.9rem;
   letter-spacing: .03em;
-  color: rgba(214,226,255,.76);
-  border: 1px solid transparent;
+  color: rgba(214,226,255,.78);
+  border: 1px solid rgba(78,128,255,.14);
   transition: all .22s ease;
-  background: rgba(14,24,52,.6);
-  box-shadow: 0 10px 24px rgba(4,10,24,.35);
+  background: rgba(14,24,52,.55);
 }
 .nav-pill:hover{
   color: #ffffff;
-  border-color: rgba(56,230,255,.4);
-  background: rgba(18,30,66,.85);
-  box-shadow: 0 16px 32px rgba(4,10,28,.5);
+  border-color: rgba(56,230,255,.36);
+  background: rgba(18,30,66,.78);
+  box-shadow: 0 12px 26px rgba(4,10,28,.42);
 }
 .nav-pill.is-active{
   color: #f6fbff;
   border-color: rgba(78,128,255,.38);
   background: linear-gradient(90deg, rgba(56,230,255,.24), rgba(110,134,255,.32));
-  box-shadow: 0 18px 36px rgba(6,14,36,.52);
+  box-shadow: 0 14px 30px rgba(6,14,36,.45);
 }
 
 
@@ -253,41 +255,56 @@ body.home main.site-main { flex: 0; min-height: auto; }
 
 .essay-nav{
   position: sticky;
-  top: clamp(16px, 3vw, 24px);
+  top: clamp(14px, 4vw, 32px);
   z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 12px;
   max-width: var(--content-max);
-  margin: clamp(12px, 3vw, 24px) auto clamp(16px, 4vw, 26px);
-  padding: 10px 16px;
-  border-radius: 12px;
-  background: rgba(10,18,38,.85);
-  border: 1px solid rgba(56,230,255,.24);
-  backdrop-filter: blur(12px) saturate(140%);
-  box-shadow: 0 18px 36px rgba(4,10,24,.45);
+  margin: clamp(10px, 3vw, 20px) auto clamp(14px, 4vw, 24px);
+  padding: 0;
+  background: transparent;
 }
 .essay-nav__back{
-  color: rgba(132,212,255,.9);
+  position: fixed;
+  top: clamp(70px, 10vw, 92px);
+  right: clamp(16px, 5vw, 28px);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(56,230,255,.32);
+  background: rgba(12,22,48,.8);
+  color: rgba(148,222,255,.92);
   text-decoration: none;
-  font-size: 0.9rem;
-  letter-spacing: .06em;
+  font-size: 0.82rem;
+  letter-spacing: .08em;
   text-transform: uppercase;
+  box-shadow: 0 16px 28px rgba(4,10,28,.45);
+}
+.essay-nav__links{
+  display: flex;
+  gap: 12px;
+  margin-left: auto;
 }
 .essay-nav__link{
-  color: rgba(210,222,255,.86);
+  color: rgba(210,222,255,.75);
   text-decoration: none;
-  font-size: 0.9rem;
-  max-width: 45%;
+  font-size: 0.88rem;
+  max-width: clamp(140px, 28vw, 220px);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.essay-nav__prev{ margin-right: auto; }
-.essay-nav__next{ margin-left: auto; text-align: right; }
-.essay-nav a:hover,
-.essay-nav a:focus-visible{ color: rgba(158,230,255,1); }
+.essay-nav__link:hover,
+.essay-nav__link:focus-visible{ color: rgba(158,230,255,1); }
+.essay-nav__back:hover,
+.essay-nav__back:focus-visible{
+  color: #ffffff;
+  border-color: rgba(56,230,255,.48);
+  background: rgba(18,32,70,.85);
+}
 
 .contact-links{
   display: flex;
