@@ -1,0 +1,14 @@
+<a class="brand" href="/">FABIO XIE</a>
+
+<button class="nav-toggle" aria-controls="nav-drawer" aria-expanded="false">
+  <span class="sr-only">Menu</span>
+  ☰
+</button>
+
+<nav id="nav-drawer" class="nav-vertical" aria-label="Primary">
+  <a class="nav-link{% if page.url.startsWith('/about/') %} is-active{% endif %}" href="/about/">Bio</a>
+  <a class="nav-link{% if page.url.startsWith('/essay/') %} is-active{% endif %}" href="/essay/">Essays</a>
+  <a class="nav-link{% if page.url.startsWith('/insights/') %} is-active{% endif %}" href="/insights/">Insights</a>
+  <a class="nav-link{% if page.url.startsWith('/bookshelf/') %} is-active{% endif %}" href="/bookshelf/">Bookshelf</a>
+  <a class="nav-link{% if page.url.startsWith('/quotes/') %} is-active{% endif %}" href="/quotes/">Quotes</a>
+</nav>

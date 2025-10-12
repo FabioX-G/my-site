@@ -18,21 +18,24 @@
 {# 仅保留一个控制类：reading（沉浸阅读模式） #}
 <body class="{% if reading %}reading {% endif %}{% if home %}home{% endif %}">
   {# 无障碍：键盘直达主内容 #}
-  <a class="skip-link" href="#main-content">跳到主内容</a>
+  <a class="skip-link" href="#content">Skip to content</a>
 
   {% if not reading %}
-    <header class="site-nav" role="banner">
-      <div class="nav-shell">
-        <a class="nav-logo" href="/">Fabio Xie</a>
-        <nav class="nav-primary" aria-label="主菜单">
-          <a class="nav-pill{% if page.url == '/' %} is-active{% endif %}" href="/">Overview</a>
-          <a class="nav-pill{% if page.url == '/about/' %} is-active{% endif %}" href="/about/">About</a>
-          <a class="nav-pill{% if page.url == '/essay/' %} is-active{% endif %}" href="/essay/">Essays</a>
-          <a class="nav-pill{% if page.url == '/bookshelf/' %} is-active{% endif %}" href="/bookshelf/">Bookshelf</a>
-          <a class="nav-pill{% if page.url == '/quotes/' %} is-active{% endif %}" href="/quotes/">Quotes</a>
-        </nav>
-      </div>
-    </header>
+    <div class="layout">
+      <aside class="sidebar" aria-label="Primary">
+        {% include "nav.njk" %}
+      </aside>
+      <main id="content" class="page" role="main" tabindex="-1">
+        <div class="container {{ bodyClass | default('') }} ">
+          {{ content | safe }}
+        </div>
+        <footer class="site-footer" role="contentinfo">
+          <div class="container--footer">
+            © {% year %} Fabio Xie
+          </div>
+        </footer>
+      </main>
+    </div>
   {% else %}
     <nav class="essay-nav" aria-label="Essay navigation">
       <a href="/essay/" class="essay-nav__back" title="Back to Essays">↺ Essays</a>
@@ -45,30 +48,30 @@
         {% endif %}
       </div>
     </nav>
+    <main id="content" class="site-main" role="main" tabindex="-1">
+      <div class="container {{ bodyClass | default('') }} ">
+        {{ content | safe }}
+      </div>
+    </main>
+    <footer class="site-footer" role="contentinfo">
+      <div class="container--footer">
+        © {% year %} Fabio Xie
+      </div>
+    </footer>
   {% endif %}
 
-  {# ───────── 主内容区域（唯一的主容器）───────── #}
-  <main  id="main-content" class="site-main" role="main" tabindex="-1">
-    <div class="container {{ bodyClass | default('') }} ">
-      {{ content | safe }}
-    </div>
-  </main>
-
-  {# ───────── 站点页脚：贴底 + 居中（居中交给 CSS）───────── #}
-  <footer class="site-footer" role="contentinfo">
-    <div class="container--footer">
-      © {% year %} Fabio Xie
-    </div>
-  </footer>
-
   <script>
-    (function () {
-      function resetNavScroll() {
-        var scroller = document.querySelector('.nav-primary');
-        if (scroller) scroller.scrollLeft = 0;
-      }
-      document.addEventListener('DOMContentLoaded', resetNavScroll);
-      window.addEventListener('pageshow', resetNavScroll);
+    (function(){
+      const btn = document.querySelector('.nav-toggle');
+      const nav = document.getElementById('nav-drawer');
+      if(!btn || !nav) return;
+      function open(){ btn.setAttribute('aria-expanded','true'); document.documentElement.classList.add('menu-open'); }
+      function close(){ btn.setAttribute('aria-expanded','false'); document.documentElement.classList.remove('menu-open'); }
+      btn.addEventListener('click', ()=> (btn.getAttribute('aria-expanded')==='true'? close(): open()));
+      nav.addEventListener('click', event => {
+        if(event.target.closest('a')) close();
+      });
+      window.addEventListener('keydown', e=>{ if(e.key==='Escape') close(); });
     })();
   </script>
 
