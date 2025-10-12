@@ -12,8 +12,8 @@ home: true
   </div>
   <div class="hero-copy">
     <p>This is Fabio.</p>
-    <p>Born in Lisbon 🇵🇹, grew up in Shanghai 🇨🇳, studied at Syracuse University 🇺🇸, lived in Thailand 🇹🇭 for a while, and now I’m back in Portugal to work at <strong><a href="https://www.amora-vida.com/">Amora Vida</a></strong>. (More <a href="/about/">about me</a>)</p>
-    <p>I share my <a href="/essay/">essays</a> here from time to time to think and reflect.</p>
+    <p>I work at <strong><a href="https://www.amora-vida.com/">Amora Vida</a></strong>. (More <a href="/about/">about me</a>)</p>
+    <p>I share my essays <a href="/essay/">here</a> from time to time to think and reflect.</p>
   </div>
 </div>
 
