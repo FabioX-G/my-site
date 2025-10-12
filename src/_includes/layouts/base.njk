@@ -61,5 +61,16 @@
     </div>
   </footer>
 
+  <script>
+    (function () {
+      function resetNavScroll() {
+        var scroller = document.querySelector('.nav-primary');
+        if (scroller) scroller.scrollLeft = 0;
+      }
+      document.addEventListener('DOMContentLoaded', resetNavScroll);
+      window.addEventListener('pageshow', resetNavScroll);
+    })();
+  </script>
+
 </body>
 </html>

@@ -168,6 +168,7 @@ body.home main.site-main { flex: 0; min-height: auto; }
   flex-wrap: nowrap;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
+  direction: ltr;
 }
 .nav-primary::-webkit-scrollbar{ display: none; }
 .nav-pill{
@@ -201,8 +202,16 @@ body.home main.site-main { flex: 0; min-height: auto; }
     gap: 10px;
   }
   .nav-logo{ font-size: .95rem; }
-  .nav-primary{ gap: 10px; }
-  .nav-pill{ padding: 6px 12px; font-size: .88rem; }
+  .nav-primary{
+    gap: 10px;
+    justify-content: flex-start;
+    scroll-snap-type: x proximity;
+  }
+  .nav-pill{
+    padding: 6px 12px;
+    font-size: .88rem;
+    scroll-snap-align: start;
+  }
 }
 
 
