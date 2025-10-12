@@ -38,5 +38,5 @@ In my free time, I enjoy reading nonfiction <a href="/bookshelf/">books</a>, tra
 <div class="contact-links" aria-label="Ways to reach me">
   <a class="contact-chip" href="mailto:fabio@amora-vida.com">Email</a>
   <a class="contact-chip" href="https://www.youtube.com/@fabio_xie" target="_blank" rel="noopener noreferrer">YouTube</a>
-  <a class="contact-chip" href="https://www.linkedin.com/in/fabio-xie" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+  <a class="contact-chip" href="https://www.linkedin.com/in/fabio-x-871364176/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
 </div>

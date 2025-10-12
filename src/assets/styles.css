@@ -131,13 +131,13 @@ body.home main.site-main { flex: 0; min-height: auto; }
 .site-nav{
   position: sticky;
   top: 0;
-  z-index: 2000;
+  z-index: 3000;
   display: flex;
   justify-content: center;
   width: 100%;
-  background: rgba(18,30,54,.8);
-  border-bottom: 1px solid rgba(162,212,255,.24);
-  backdrop-filter: blur(18px) saturate(150%);
+  background: transparent;
+  border-bottom: 0;
+  backdrop-filter: none;
 }
 .nav-shell{
   width: min(1080px, 100%);
@@ -146,10 +146,11 @@ body.home main.site-main { flex: 0; min-height: auto; }
   align-items: center;
   gap: clamp(8px, 2vw, 20px);
   padding: clamp(10px, 2vw, 16px) clamp(18px, 3vw, 28px);
-  background: rgba(28,42,78,.6);
-  border-radius: 16px;
-  border: 1px solid rgba(176,220,255,.26);
-  box-shadow: 0 30px 68px rgba(10,18,40,.44);
+  background: rgba(18,30,54,.82);
+  border-radius: clamp(10px, 2vw, 18px);
+  border: 1px solid rgba(176,220,255,.24);
+  box-shadow: 0 18px 42px rgba(10,18,40,.36);
+  backdrop-filter: blur(12px) saturate(140%);
 }
 .nav-logo{
   font-weight: 700;
@@ -164,6 +165,7 @@ body.home main.site-main { flex: 0; min-height: auto; }
   justify-content: flex-end;
   gap: clamp(8px, 2.2vw, 18px);
   overflow-x: auto;
+  flex-wrap: nowrap;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 }
@@ -184,13 +186,23 @@ body.home main.site-main { flex: 0; min-height: auto; }
   color: #ffffff;
   border-color: rgba(146,236,255,.46);
   background: rgba(38,54,96,.84);
-  box-shadow: 0 16px 32px rgba(12,20,44,.48);
+  box-shadow: 0 8px 18px rgba(12,20,44,.36);
 }
 .nav-pill.is-active{
   color: #ffffff;
   border-color: rgba(192,238,255,.48);
   background: linear-gradient(90deg, rgba(146,236,255,.3), rgba(190,214,255,.38));
-  box-shadow: 0 20px 40px rgba(14,22,50,.52);
+  box-shadow: 0 12px 28px rgba(14,22,50,.4);
+}
+
+@media (max-width: 720px){
+  .nav-shell{
+    padding: max(8px, calc(env(safe-area-inset-top))) 14px;
+    gap: 10px;
+  }
+  .nav-logo{ font-size: .95rem; }
+  .nav-primary{ gap: 10px; }
+  .nav-pill{ padding: 6px 12px; font-size: .88rem; }
 }
 
 
