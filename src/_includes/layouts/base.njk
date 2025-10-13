@@ -21,10 +21,8 @@
   <a class="skip-link" href="#content">Skip to content</a>
 
   {% if not reading %}
+    {% include "nav.njk" %}
     <div class="layout">
-      <aside class="sidebar" aria-label="Primary">
-        {% include "nav.njk" %}
-      </aside>
       <main id="content" class="page" role="main" tabindex="-1">
         <div class="container {{ bodyClass | default('') }} ">
           {{ content | safe }}
@@ -63,14 +61,36 @@
   <script>
     (function(){
       const btn = document.querySelector('.nav-toggle');
-      const nav = document.getElementById('nav-drawer');
-      if(!btn || !nav) return;
-      function open(){ btn.setAttribute('aria-expanded','true'); document.documentElement.classList.add('menu-open'); }
-      function close(){ btn.setAttribute('aria-expanded','false'); document.documentElement.classList.remove('menu-open'); }
-      btn.addEventListener('click', ()=> (btn.getAttribute('aria-expanded')==='true'? close(): open()));
-      nav.addEventListener('click', event => {
+      const overlay = document.getElementById('nav-overlay');
+      const closeBtn = document.querySelector('.nav-close');
+      const html = document.documentElement;
+      if(!btn || !overlay) return;
+      function open(){
+        btn.setAttribute('aria-expanded','true');
+        html.classList.add('menu-open');
+        if(closeBtn){ closeBtn.focus(); }
+      }
+      function close(){
+        btn.setAttribute('aria-expanded','false');
+        html.classList.remove('menu-open');
+        if(window.getComputedStyle(btn).display !== 'none'){
+          btn.focus();
+        }
+      }
+      btn.addEventListener('click', ()=> btn.getAttribute('aria-expanded')==='true' ? close() : open());
+      if(closeBtn){
+        closeBtn.addEventListener('click', close);
+      }
+      overlay.addEventListener('click', event => {
         if(event.target.closest('a')) close();
+        if(event.target.classList.contains('nav-overlay')) close();
       });
+      const mq = window.matchMedia('(max-width: 720px)');
+      if(mq && mq.addEventListener){
+        mq.addEventListener('change', e => { if(!e.matches) close(); });
+      } else if(mq && mq.addListener){
+        mq.addListener(e => { if(!e.matches) close(); });
+      }
       window.addEventListener('keydown', e=>{ if(e.key==='Escape') close(); });
     })();
   </script>

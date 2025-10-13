@@ -1,14 +1,35 @@
-<a class="brand" href="/">FABIO XIE</a>
+{% set current = page.url or '' %}
+{% set links = [
+  { "href": "/about/", "label": "Bio", "active": current.startsWith('/about/') },
+  { "href": "/essay/", "label": "Essays", "active": current.startsWith('/essay/') },
+  { "href": "/insights/", "label": "Insights", "active": current.startsWith('/insights/') },
+  { "href": "/quotes/", "label": "Quotes", "active": current.startsWith('/quotes/') },
+  { "href": "/bookshelf/", "label": "Bookshelf", "active": current.startsWith('/bookshelf/') }
+] %}
 
-<button class="nav-toggle" aria-controls="nav-drawer" aria-expanded="false">
-  <span class="sr-only">Menu</span>
-  ☰
+<aside class="sidebar" aria-label="Primary navigation">
+  <a class="brand" href="/">FABIO XIE</a>
+  <nav class="nav-vertical nav-vertical--sidebar" aria-label="Primary">
+    {% for link in links %}
+      <a class="nav-link{% if link.active %} is-active{% endif %}"
+         href="{{ link.href }}"
+         {% if link.active %}aria-current="page"{% endif %}>{{ link.label }}</a>
+    {% endfor %}
+  </nav>
+</aside>
+
+<button class="nav-toggle" type="button" aria-controls="nav-overlay" aria-expanded="false">
+  <span class="sr-only">Open menu</span> ☰
 </button>
 
-<nav id="nav-drawer" class="nav-vertical" aria-label="Primary">
-  <a class="nav-link{% if page.url.startsWith('/about/') %} is-active{% endif %}" href="/about/">Bio</a>
-  <a class="nav-link{% if page.url.startsWith('/essay/') %} is-active{% endif %}" href="/essay/">Essays</a>
-  <a class="nav-link{% if page.url.startsWith('/insights/') %} is-active{% endif %}" href="/insights/">Insights</a>
-  <a class="nav-link{% if page.url.startsWith('/bookshelf/') %} is-active{% endif %}" href="/bookshelf/">Bookshelf</a>
-  <a class="nav-link{% if page.url.startsWith('/quotes/') %} is-active{% endif %}" href="/quotes/">Quotes</a>
-</nav>
+<div class="nav-overlay" id="nav-overlay">
+  <button class="nav-close" type="button" aria-label="Close menu">✕</button>
+  <a class="brand brand--overlay" href="/">FABIO XIE</a>
+  <nav class="nav-vertical nav-vertical--overlay" aria-label="Mobile primary navigation">
+    {% for link in links %}
+      <a class="nav-link{% if link.active %} is-active{% endif %}"
+         href="{{ link.href }}"
+         {% if link.active %}aria-current="page"{% endif %}>{{ link.label }}</a>
+    {% endfor %}
+  </nav>
+</div>

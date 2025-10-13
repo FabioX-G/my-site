@@ -4,36 +4,43 @@ title: Home
 home: true
 ---
 
-# Welcome to my site!
-
 <div class="hero-intro">
   <div class="hero-avatar">
     <img src="/assets/fabio-photo.png" alt="Portrait of Fabio Xie" decoding="async" loading="lazy" />
   </div>
   <div class="hero-copy">
-    <p>This is Fabio.</p>
-    <p>I work at <strong><a href="https://www.amora-vida.com/">Amora Vida</a></strong>. (More <a href="/about/">about me</a>)</p>
-    <p>I share my essays <a href="/essay/">here</a> from time to time to think and reflect.</p>
+    <h1>Fabio Xie</h1>
+    <p>Building at <a href="https://www.amora-vida.com/">Amora Vida</a> in Portugal.</p>
+    <p><a href="/about/">Read my bio →</a></p>
   </div>
 </div>
 
-In my free time, I enjoy reading nonfiction <a href="/bookshelf/">books</a>, training <a href="https://youtu.be/b-5bljm8tSk">Muay Thai</a>, playing soccer, <a href="https://youtu.be/034gmmUK8vc">interviewing</a> friends, vibe-coding this personal website of mine, and spending time with my 10-year-old brother <a href="https://youtu.be/dF_8LnEW9QU?si=Wl7bBf9lCH_KhuzK">Jason</a> (we play Brawl Stars & FC Mobile, brainstorm about his new novels, and read comic books before bedtime).
+<p>I split my time between building product, sharpening my judgment through <a href="/essay/">essays</a>, and collecting <a href="/insights/">ideas</a> (through <a href="/bookshelf/">reading</a> and <a href="https://youtube.com/playlist?list=PLj16FroKy8w9ZVWMyARY8ckgfOXrGo9Dn&amp;si=EO1yRSOArpazXr53" target="_blank" rel="noopener noreferrer">talking</a>) that make me better at both.</p>
 
-
+{% set latestEssays = collections.essayLatest or collections.essayDesc %}
+{% if latestEssays and latestEssays.length %}
 ## Latest Essays
-{% for post in collections.essay | sort(attribute='date') | reverse %}
-  {% if loop.index0 < 3 %}
-- [{{ post.data.title }}]({{ post.url }}) ({{ post.date | date('yyyy-LL-dd') }})
-  {% endif %}
+<ul class="blog-list blog-list--compact">
+{% for post in latestEssays %}
+  <li>
+    <a class="blog-link" href="{{ post.url }}">{{ post.data.title }}</a>
+    <span class="blog-meta">{{ post.date | date('yyyy-LL-dd') }}</span>
+  </li>
 {% endfor %}
+</ul>
+{% endif %}
 
-
-
-<p class="home-cta">
-  · <a href="/essay/">See all essays →</a> 
-  · <a href="/bookshelf/">My bookshelf →</a>
-  · <a href="/quotes/">Quotes →</a>
-</p>
+{% if collections.insights and collections.insights.length %}
+## Latest Insights
+<ul class="blog-list blog-list--compact">
+{% for it in collections.insights | slice(0,3) %}
+  <li>
+    <a class="blog-link" href="{{ it.url }}">{{ it.data.title }}</a>
+    <span class="blog-meta">{{ it.date | date('yyyy-LL-dd') }}</span>
+  </li>
+{% endfor %}
+</ul>
+{% endif %}
 
 <div class="contact-links" aria-label="Ways to reach me">
   <a class="contact-chip" href="mailto:fabio@amora-vida.com">Email</a>

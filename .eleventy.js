@@ -32,7 +32,24 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addShortcode("year", () => new Date().getFullYear());  
 
   eleventyConfig.addCollection("essayDesc", (api) =>
-  api.getFilteredByTag("essay").sort((a, b) => b.date - a.date)
+    api.getFilteredByTag("essay")
+      .filter(item => !item.data.draft)
+      .sort((a, b) => b.date - a.date)
+  );
+
+  eleventyConfig.addCollection("essay", (api) =>
+    api.getFilteredByTag("essay").sort((a, b) => b.date - a.date)
+  );
+
+  eleventyConfig.addCollection("essayLatest", (api) =>
+    api.getFilteredByTag("essay")
+      .filter(item => !item.data.draft)
+      .sort((a, b) => b.date - a.date)
+      .slice(0, 3)
+  );
+
+  eleventyConfig.addCollection("insights", (api) =>
+    api.getFilteredByTag("insight").sort((a, b) => b.date - a.date)
   );
 
   // 目录与模板引擎（v3 用返回对象）
