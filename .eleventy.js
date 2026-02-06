@@ -34,18 +34,28 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addCollection("essayDesc", (api) =>
     api.getFilteredByTag("essay")
       .filter(item => !item.data.draft)
+      .filter(item => !(item.data.tags || []).includes("venture"))
       .sort((a, b) => b.date - a.date)
   );
 
   eleventyConfig.addCollection("essay", (api) =>
-    api.getFilteredByTag("essay").sort((a, b) => b.date - a.date)
+    api.getFilteredByTag("essay")
+      .filter(item => !(item.data.tags || []).includes("venture"))
+      .sort((a, b) => b.date - a.date)
   );
 
   eleventyConfig.addCollection("essayLatest", (api) =>
     api.getFilteredByTag("essay")
       .filter(item => !item.data.draft)
+      .filter(item => !(item.data.tags || []).includes("venture"))
       .sort((a, b) => b.date - a.date)
       .slice(0, 3)
+  );
+
+  eleventyConfig.addCollection("venture", (api) =>
+    api.getFilteredByTag("venture")
+      .filter(item => !item.data.draft)
+      .sort((a, b) => b.date - a.date)
   );
 
   eleventyConfig.addCollection("insights", (api) =>

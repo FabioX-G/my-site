@@ -2,9 +2,12 @@
 layout: layouts/post.njk   # 已在 posts.json 里也会默认加到位
 title: My First Venture | SHSA Soccer League    # 必填！没有就不会出现在列表
 date: 2020-10-08           # 建议用 YYYY-MM-DD
-tags: essay
+tags:
+  - venture
 reading: true              # 可选：是否显示“继续阅读”等
 draft: false               # 可选：写草稿就先 true，本地可见、线上不发（如需我可帮你加草稿逻辑）
+backHref: /ventures/
+backLabel: Ventures
 ---
 
 # My First Venture: SHSA Soccer League
@@ -58,6 +61,8 @@ And of course, my parents wouldn't be so supportive if it wasn't for the "extrac
 This was the start of my adventurous "startup" journey. This experience drastically influenced me and my thoughts on life. It was at the age of 15 that I started to be observant about the problems (in this case, it is the mismatch of students who were eager to play soccer and the poor conditions they were provided with) around me and gradually started to enjoy solving these problems with friends. The process was extremely tedious. But the ultimate reward was satisfying and long-lasting.
 
 It was the moment that I saw the smiles on these young players (my very own friends and peers)' faces on the soccer field that made me think all my time, energy, and money spent on it was well worth it.
+
+The process of preparing and organizing the soccer games was so much fun for me that I didn't even bother reviewing for my Biology midterm exam, and getting a 49/100 wasn't so fun, especially when my friend Myles got a 94 while sitting right next to me in that class.
 
 Huge shout out to Max (Yifei) Yang for securing sponsorships in the next few seasons of our soccer league, Michael (Luozhou) Peng for helping with anything related to design, Francis Zhang for getting us all the media exposure, and Angelina (Yiyun) Zhou for doing a phenomenal job at expanding and continuing operating the league!
 

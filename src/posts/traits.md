@@ -3,6 +3,8 @@ layout: layouts/post.njk
 date: 2024-09-27
 tags: essay
 reading: true
+draft: true
+permalink: false
 title: 创新者的五个人格特质
 ---
 

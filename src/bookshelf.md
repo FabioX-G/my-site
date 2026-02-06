@@ -2,7 +2,7 @@
 layout: layouts/base.njk
 title: Bookshelf
 permalink: /bookshelf/index.html
-bodyClass: page--tight-top
+bodyClass: page--tight-top bookshelf-page
 ---
 
 # Bookshelf
@@ -17,15 +17,17 @@ This digital bookshelf is the result of that philosophy. It is a living catalog 
 
 To help you navigate, I've color-coded my recommendations:
 
-  - Orange: Personal favorites that drastically changed how I see the world. These books are either unusually dense with insights or contain a single, transformative idea that provides a new model for the world. These are the rare books whose lessons have stuck with me long after reading.
+  - <span class="legend-favorite">Orange</span>: Personal favorites that drastically changed how I see the world. These books are either unusually dense with insights or contain a single, transformative idea that provides a new model for the world. These are the rare books whose lessons have stuck with me long after reading.
 
-  - Green: Strong recommendations that are well worth reading (and re-reading).
+  - <span class="legend-good">Green</span>: Strong recommendations that are well worth reading (and re-reading).
 
-  - Blue: Everything else I've found interesting.
+  - <span class="legend-okay">Blue</span>: Everything else I've found interesting.
 
 The book titles are links that will take you to the Amazon page for the edition I own.
 
 #### I hope you find something below that sparks your interest too!
+
+## Shelf Catalog
 
 {% set list = library | sort(false, false, 'author') %}
 <ul class="books">
