@@ -1,7 +1,7 @@
 ---
 layout: layouts/post.njk
 date: 2023-02-10
-tags: essay
+tags: legacy
 reading: true
 title: Quantity > Quality
 ---

@@ -447,6 +447,52 @@ body.reading .container{
   background: transparent;
 }
 
+/* Imported Substack content: keep media fluid across device sizes */
+.substack-import{
+  width: 100%;
+}
+.substack-import figure{
+  margin: clamp(14px, 2.8vw, 24px) 0;
+}
+.substack-import .captioned-image-container{
+  width: 100%;
+}
+.substack-import .image-link,
+.substack-import .substack-image-open,
+.substack-import .image2-inset,
+.substack-import picture{
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+.substack-import img{
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+.substack-import iframe,
+.substack-import video{
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border: 0;
+}
+.substack-import .image-link-expand,
+.substack-import .restack-image{
+  display: none !important;
+}
+.substack-import figcaption,
+.substack-import .image-caption{
+  margin-top: 8px;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: rgba(210,226,244,.84);
+}
+
 /* ---------- 10) Lists / Blog ---------- */
 .blog-list, .link-list{
   padding-left: 1.1em;

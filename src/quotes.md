@@ -179,4 +179,4 @@ Collected passages that deserve the full canvas.
   </figcaption>
 </figure>
 
-For longer reflections and my own takeaways, visit the <a href="/insights/">Insights</a> page.
+For longer reflections and my own takeaways, visit my <a href="/blog/">Blog</a> and <a href="/booknotes/">Book Notes</a> pages.

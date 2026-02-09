@@ -1,12 +1,12 @@
 {% set current = page.url or '' %}
 {% set links = [
   { "href": "/about/", "label": "Bio", "active": current.startsWith('/about/') },
-  { "href": "/essay/", "label": "Essays", "active": current.startsWith('/essay/') },
   { "href": "/ventures/", "label": "Ventures", "active": current.startsWith('/ventures/') },
-  { "href": "/insights/", "label": "Insights", "active": current.startsWith('/insights/') },
-  { "href": "/quotes/", "label": "Quotes", "active": current.startsWith('/quotes/') },
+  { "href": "/essays/", "label": "Essays", "active": current.startsWith('/essays/') },
+  { "href": "/blog/", "label": "Blog", "active": current.startsWith('/blog/') },
   { "href": "/bookshelf/", "label": "Bookshelf", "active": current.startsWith('/bookshelf/') },
-  { "href": "/games/", "label": "Games", "active": current.startsWith('/games/') }
+  { "href": "/booknotes/", "label": "Book Notes", "active": current.startsWith('/booknotes/') },
+  { "href": "/quotes/", "label": "Quotes", "active": current.startsWith('/quotes/') }
 ] %}
 
 <aside class="sidebar" aria-label="Primary navigation">

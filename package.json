@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "eleventy --serve",
-    "build": "eleventy"
+    "build": "eleventy",
+    "bookshelf:validate": "node scripts/validate-bookshelf.js",
+    "substack:import": "node scripts/import-substack.js Wt-6NaubSlGLcaTaeSTwvw"
   },
   "keywords": [],
   "author": "",

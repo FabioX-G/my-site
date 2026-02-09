@@ -7,18 +7,36 @@ module.exports = function(eleventyConfig) {
 
   // ===== 日期过滤器 =====
   const { DateTime } = require("luxon");
+  const toDateTime = (value) => {
+    if (!value) return null;
+    if (DateTime.isDateTime(value)) return value;
+    if (value instanceof Date) return DateTime.fromJSDate(value, { zone: "utc" });
+    if (typeof value === "string") {
+      const iso = DateTime.fromISO(value, { zone: "utc" });
+      if (iso.isValid) return iso;
+      const rfc = DateTime.fromRFC2822(value, { zone: "utc" });
+      if (rfc.isValid) return rfc;
+      const sql = DateTime.fromSQL(value, { zone: "utc" });
+      if (sql.isValid) return sql;
+      const js = new Date(value);
+      if (!Number.isNaN(js.getTime())) return DateTime.fromJSDate(js, { zone: "utc" });
+    }
+    return null;
+  };
 
   // 兼容你在模板里用到的 | date
   // 用法：{{ someDate | date("yyyy-LL-dd") }}
   eleventyConfig.addFilter("date", (dateObj, fmt = "yyyy-LL-dd") => {
-    if (!dateObj) return "";
-    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat(fmt);
+    const dt = toDateTime(dateObj);
+    if (!dt || !dt.isValid) return "";
+    return dt.toFormat(fmt);
   });
 
   // 你在 blog.md 里用到的 | dateFormat
   eleventyConfig.addFilter("dateFormat", (dateObj, fmt = "yyyy-LL-dd") => {
-    if (!dateObj) return "";
-    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat(fmt);
+    const dt = toDateTime(dateObj);
+    if (!dt || !dt.isValid) return "";
+    return dt.toFormat(fmt);
   });
 
   // ===== 文章集合：只取 tags:["posts"] 且 reading:true，按日期倒序 =====
@@ -60,6 +78,20 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addCollection("insights", (api) =>
     api.getFilteredByTag("insight").sort((a, b) => b.date - a.date)
+  );
+
+  eleventyConfig.addCollection("blog", (api) =>
+    api.getFilteredByTag("blog")
+      .filter(item => !item.data.draft)
+      .filter(item => !(item.data.tags || []).includes("venture"))
+      .filter(item => !(item.data.tags || []).includes("booknote"))
+      .sort((a, b) => b.date - a.date)
+  );
+
+  eleventyConfig.addCollection("booknotes", (api) =>
+    api.getFilteredByTag("booknote")
+      .filter(item => !item.data.draft)
+      .sort((a, b) => b.date - a.date)
   );
 
   // 目录与模板引擎（v3 用返回对象）

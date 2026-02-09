@@ -36,7 +36,7 @@
     </div>
   {% else %}
     <nav class="essay-nav" aria-label="Essay navigation">
-      <a href="{{ backHref | default('/essay/') }}" class="essay-nav__back" title="Back to {{ backLabel | default('Essays') }}">↺ {{ backLabel | default('Essays') }}</a>
+      <a href="{{ backHref | default('/essays/') }}" class="essay-nav__back" title="Back to {{ backLabel | default('Essays') }}">↺ {{ backLabel | default('Essays') }}</a>
       <div class="essay-nav__links">
         {% if page.previous %}
           <a class="essay-nav__link essay-nav__prev" href="{{ page.previous.url }}" title="Previous post">← {{ page.previous.data.title }}</a>

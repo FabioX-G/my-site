@@ -1,6 +1,8 @@
 ---
 title: "Insights"
 layout: layouts/base.njk
+permalink: false
+eleventyExcludeFromCollections: true
 ---
 
 # Insights

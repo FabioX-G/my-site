@@ -15,7 +15,7 @@ home: true
   </div>
 </div>
 
-<p>I split my time between building product, sharpening my judgment through <a href="/essay/">essays</a>, and collecting <a href="/insights/">ideas</a> (through <a href="/bookshelf/">reading</a> and <a href="https://youtube.com/playlist?list=PLj16FroKy8w9ZVWMyARY8ckgfOXrGo9Dn&amp;si=EO1yRSOArpazXr53" target="_blank" rel="noopener noreferrer">talking</a>) that make me better at both.</p>
+<p>I split my time between building product, sharpening my judgment through <a href="/essays/">essays</a>, and collecting ideas (through <a href="/bookshelf/">reading</a> and <a href="https://youtube.com/playlist?list=PLj16FroKy8w9ZVWMyARY8ckgfOXrGo9Dn&amp;si=EO1yRSOArpazXr53" target="_blank" rel="noopener noreferrer">talking</a>) that make me better at both.</p>
 
 {% set latestEssays = collections.essayLatest or collections.essayDesc %}
 {% if latestEssays and latestEssays.length %}
