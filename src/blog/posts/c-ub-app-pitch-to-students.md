@@ -2,12 +2,12 @@
 title: "C!ub App Pitches"
 date: "2022-12-18T02:06:33.000Z"
 tags:
-  - blog
+  - venture
 reading: true
 draft: false
-backHref: /blog/
-backLabel: Blog
-permalink: "/blog/c-ub-app-pitch-to-students/index.html"
+backHref: /ventures/
+backLabel: Ventures
+permalink: "/ventures/c-ub-app-pitch-to-students/index.html"
 substackUrl: "https://fabioxie.substack.com/p/c-ub-app-pitch-to-students"
 ---
 

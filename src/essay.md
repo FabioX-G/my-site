@@ -1,7 +1,7 @@
 ---
 layout: layouts/base.njk
 title: Essays
-permalink: /essays/index.html
+permalink: false
 ---
 “An essay is something you write to figure something out.” - [Paul Graham](https://www.paulgraham.com/field.html)
 

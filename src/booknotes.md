@@ -2,11 +2,12 @@
 layout: layouts/base.njk
 title: Book Notes
 permalink: /booknotes/index.html
+bodyClass: page-booknotes
 ---
 
 # Book Notes
 
-Reading notes and takeaways from books I have finished.
+Selected notes and takeaways from books I found interesting to read at the time.
 
 <ul>
 {% for post in collections.booknotes %}

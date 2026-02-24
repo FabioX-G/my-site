@@ -7,13 +7,11 @@ bodyClass: page--tight-top bookshelf-page
 
 # Bookshelf
 
-Welcome to my digital bookshelf!
+This is a record of books I've read and kept around.
 
-For a long time, school tricked me into thinking reading was a chore. I've since found the antidote: 
+For years, schools tricked us into viewing reading like mandatory chores (aka homework). That changed when I started choosing books based on my personal curiosity at any given time, not obligation enforced by someone else.
 
-> follow your own curiosity relentlessly.
-
-This digital bookshelf is the result of that philosophy. It is a living catalog of (most of) the physical books that I own, guided by whatever subject interests me most at any given moment.
+Most books here are physical copies from my bookshelf at home, and the list keeps growing as my interests expand over time.
 
 To help you navigate, I've color-coded my recommendations:
 
@@ -21,9 +19,9 @@ To help you navigate, I've color-coded my recommendations:
 
   - <span class="legend-good">Green</span>: Strong recommendations that are well worth reading (and re-reading).
 
-  - <span class="legend-okay">Blue</span>: Everything else I've found interesting.
+  - Rest: Everything else I've found interesting.
 
-The book titles are links that will take you to the Amazon page for the edition I own.
+The book titles are links that take you to Amazon results for that specific book.
 
 #### I hope you find something below that sparks your interest too!
 

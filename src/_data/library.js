@@ -26,7 +26,7 @@
  * Optional: highlight: "favorite" | "good" | "okay", tags: string[]
  */
 
-module.exports = [
+const books = [
   // — Recent adds —
   { title: "The Technological Republic: Hard Power, Soft Belief, and the Future of the West", author: "Alexander C. Karp & Nicholas W. Zamiska", year: 2025, asin: "0593798694" },
   { title: "Source Code: My Beginnings", author: "Bill Gates", year: 2025, asin: "059380158X" },
@@ -39,7 +39,7 @@ module.exports = [
   { title: "Never Split the Difference", author: "Chris Voss", year: 2016, asin: "0062407805" },
   { title: "Introduction to Classical Mechanics", author: "David Morin", year: 2008, asin: "0521876222" },
   { title: "The Beginning of Infinity", author: "David Deutsch", year: 2011, asin: "0143121359",highlight: "good" },
-  { title: "Materials and Dematerialization", author: "Vaclav Smil", year: 2013, asin: "1119942535" },
+  { title: "Materials and Dematerialization", author: "Vaclav Smil", year: 2013, asin: "1394181205" },
   { title: "What Is Life?", author: "Paul Nurse", year: 2020, asin: "0393541152" },
   { title: "The Next 500 Years", author: "Christopher E. Mason", year: 2021, asin: "0262044392" },
   { title: "Nudge: The Final Edition", author: "Richard H. Thaler & Cass R. Sunstein", year: 2021, asin: "014313700X" },
@@ -69,7 +69,7 @@ module.exports = [
   { title: "The Clockwork Universe", author: "Edward Dolnick", year: 2011, asin: "0061719537" },
   { title: "The Complete Essays", author: "Michel de Montaigne (tr. M. A. Screech)", year: 2003, asin: "0140446044" },
   { title: "The Art of the Personal Essay", author: "Phillip Lopate (ed.)", year: 1994, asin: "038542339X" },
-  { title: "How to Feed the World", author: "Vaclav Smil", year: 2023, asin: "1509541605" },
+  { title: "How to Feed the World", author: "Vaclav Smil", year: 2023, asin: "0593834518" },
   { title: "The Dealmaker", author: "Guy Hands", year: 2021, asin: "1787633931" },
   { title: "A Beautiful Question: Finding Nature’s Deep Design", author: "Frank Wilczek", year: 2015, asin: "0143109367" },
   { title: "The Prize: The Epic Quest for Oil, Money, and Power", author: "Daniel Yergin", year: 1990, asin: "0671799320" },
@@ -126,21 +126,21 @@ module.exports = [
   { title: "Poor Charlie’s Almanack", author: "Charles T. Munger", year: 2005, asin: "1578645018", highlight: "good" },
   { title: "Why We Die", author: "Venki Ramakrishnan", year: 2023, asin: "154160439X" },
   { title: "The Skeptics’ Guide to the Future", author: "Steven Novella, Bob Novella & Jay Novella", year: 2022, asin: "153870954X" },
-  { title: "Insanely Great", author: "Steven Levy", year: 1994, asin: "014200135X" },
+  { title: "Insanely Great", author: "Steven Levy", year: 1994, asin: "0140232370" },
   { title: "The Idea Factory", author: "Jon Gertner", year: 2012, asin: "0143122797" },
   { title: "Something Incredibly Wonderful Happens", author: "K. C. Cole", year: 2009, asin: "0670021625" },
-  { title: "Invention and Innovation", author: "Vaclav Smil", year: 2023, asin: "0262048053" },
+  { title: "Invention and Innovation", author: "Vaclav Smil", year: 2023, asin: "0262551012" },
   { title: "Scaling People", author: "Claire Hughes Johnson", year: 2023, asin: "1953953214" },
   { title: "High Growth Handbook", author: "Elad Gil", year: 2018, asin: "1732265104" },
-  { title: "The Dream Machine: J.C.R. Licklider and the Revolution That Made Computing Personal", author: "M. Mitchell Waldrop", year: 2018, asin: "1732265119" },
+  { title: "The Dream Machine: J.C.R. Licklider and the Revolution That Made Computing Personal", author: "M. Mitchell Waldrop", year: 2002, asin: "014200135X" },
   { title: "Revolution in Miniature (2nd ed.)", author: "Ernest Braun & Stuart Macdonald", year: 1982, asin: "0521318606" },
   { title: "Pieces of the Action", author: "Vannevar Bush", year: 2022, asin: "0262544346" },
-  { title: "The Big Score", author: "Michael S. Malone", year: 1985, asin: "0385231170" },
+  { title: "The Big Score", author: "Michael S. Malone", year: 1985, asin: "0385183518" },
   { title: "Six Easy Pieces", author: "Richard P. Feynman", year: 1994, asin: "0465025277" },
   { title: "The Conservative Futurist", author: "James Pethokoukis", year: 2023, asin: "1952223380" },
   { title: "A City on Mars", author: "Kelly & Zach Weinersmith", year: 2023, asin: "0593184642" },
   { title: "Elements of Euclid (Oliver Byrne Edition)", author: "Oliver Byrne", year: 2010, asin: "3836510369" },
-  { title: "Creating and Transforming the Twentieth Century", author: "Vaclav Smil", year: 2006, asin: "0195168745" },
+  { title: "Creating and Transforming the Twentieth Century", author: "Vaclav Smil", year: 2006, asin: "019778464X" },
   { title: "The Lessons of History", author: "Will Durant & Ariel Durant", year: 1968, asin: "0671723653" },
   { title: "Conquerors: How Portugal Forged the First Global Empire", author: "Roger Crowley", year: 2015, asin: "0812994000" },
   { title: "The Fabric of Civilization", author: "Virginia Postrel", year: 2020, asin: "1541619748" },
@@ -188,6 +188,7 @@ module.exports = [
   { title: "Business Adventures", author: "John Brooks", year: 2014, asin: "1497644895" },
   { title: "Shoe Dog", author: "Phil Knight", year: 2016, asin: "1501135929" },
   { title: "The Most Important Thing", author: "Howard Marks", year: 2011, asin: "0231145625" },
+  { title: "Mastering the Market Cycle", author: "Howard Marks", year: 2018, asin: "1328479250" },
   { title: "The Moment of Lift", author: "Melinda Gates", year: 2019, asin: "1250313570" },
 
   { title: "Calling Bullshit: The Art of Skepticism in a Data-Driven World", author: "Carl T. Bergstrom & Jevin D. West", year: 2020, asin: "0525509186" },
@@ -211,5 +212,20 @@ module.exports = [
   { title: "The Short Story of Art", author: "Susie Hodge", year: 2017, asin: "1780679684" },
 
   { title: "Zero to One: Notes on Startups, or How to Build the Future", author: "Peter Thiel with Blake Masters", year: 2014, asin: "0804139296" },
+  { title: "Principles: Life and Work", author: "Ray Dalio", year: 2017, asin: "1501124021" },
+  { title: "Principles for Dealing with the Changing World Order", author: "Ray Dalio", year: 2021, asin: "1982160276" },
+  { title: "Unconventional Success", author: "David F. Swensen", year: 2005, asin: "0743228386" },
+  { title: "Pioneering Portfolio Management", author: "David F. Swensen", year: 2009, asin: "1416544690" },
   { title: "Fundamentals: Ten Keys to Reality", author: "Frank Wilczek", year: 2021, asin: "0735223793" }
 ];
+
+module.exports = books.map((book) => {
+  const title = String(book.title || "").trim();
+  const author = String(book.author || "").trim();
+  const searchQuery = encodeURIComponent(`${title} ${author}`.trim());
+  const amazonSearch = `https://www.amazon.com/s?k=${searchQuery}`;
+  return {
+    ...book,
+    amazon: book.amazon || amazonSearch
+  };
+});

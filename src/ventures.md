@@ -1,6 +1,7 @@
 ---
 layout: layouts/base.njk
 title: Ventures
+bodyClass: page-ventures
 ---
 <h1>Ventures</h1>
 <ul>
